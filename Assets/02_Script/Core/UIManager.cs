@@ -2,7 +2,14 @@ using Cinemachine;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UI;
+using UIFunction;
+
+/*
+* Class: UIManager
+* Author: 厘窍盔
+* Created: 2024斥 6岿 13老 格夸老
+* Description: UI 积己 棺 包府
+*/
 
 public class UIManager : MonoSingleton<UIManager>
 {
@@ -20,20 +27,53 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
-    [SerializeField] private SceneUIObject[] _screenElementGroup;
+    [SerializeField] private SceneType _startSceneType;
+    [SerializeField] private SceneUIContent[] _screenElementGroup;
 
-    private Dictionary<SceneType, SceneUIObject> _sceneUIDic = new ();
-    private SceneUIObject _currentSceneUIObject;
+    private Dictionary<SceneType, SceneUIContent> _sceneUIDic = new ();
+    private SceneUIContent _currentSceneUIObject;
+    public SceneUIContent CurrentSceneUiObject => _currentSceneUIObject;
 
     private void Start()
     {
-        foreach (SceneUIObject su in _screenElementGroup)
+        foreach (SceneUIContent su in _screenElementGroup)
         {
             _sceneUIDic.Add(su.UIType, su);
         }
+
+        ChangeSceneUIOnChangeScene(_startSceneType);
     }
 
-    public T GetSceneUI<T>() where T : SceneUIObject
+    #region GetUIKewordMask
+
+    public int GetUIKewordMask(UIKeyword keword1)
+    {
+        return (int)keword1;
+    }
+
+    public int GetUIKewordMask(UIKeyword keword1, UIKeyword keword2)
+    {
+        return (int)(keword1 |= keword2);
+    }
+
+    public int GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3)
+    {
+        return (int)(keword1 |= keword2 |= keword3);
+    }
+
+    public int GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3, UIKeyword keword4)
+    {
+        return (int)(keword1 |= keword2 |= keword3 |= keword4);
+    }
+
+    public int GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3, UIKeyword keword4, UIKeyword keword5)
+    {
+        return (int)(keword1 |= keword2 |= keword3 |= keword4 |= keword5);
+    }
+
+    #endregion
+
+    public T GetSceneUIContent<T>() where T : SceneUIContent
     {
         return (T)FindFirstObjectByType(typeof(T));
     }
@@ -48,11 +88,11 @@ public class UIManager : MonoSingleton<UIManager>
 
         if (_sceneUIDic.ContainsKey(toChangeUIType))
         {
-            SceneUIObject suObject = Instantiate(_sceneUIDic[toChangeUIType], CanvasTrm);
+            SceneUIContent suObject = Instantiate(_sceneUIDic[toChangeUIType], CanvasTrm);
             suObject.gameObject.name = _sceneUIDic[toChangeUIType].gameObject.name + "_[SceneUI]_";
 
+            suObject.GenerateOnUIObject();
             suObject.SceneUIStart();
-            suObject.GenerateAllChildren();
 
             _currentSceneUIObject = suObject;
         }
