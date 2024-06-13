@@ -15,4 +15,10 @@ public abstract class ExtensionMono : MonoBehaviour
         SceneUIContent content = UIManager.Instance.CurrentSceneUiObject;
         return content.FindUIObject<T>(uiMask);
     }
+
+    public UIObject[] FindAllUIObject<T>(int uiMask) where T : UIObject
+    {
+        SceneUIContent content = UIManager.Instance.CurrentSceneUiObject;
+        return content.FindAllUIObject<T>(uiMask);
+    }
 }

@@ -16,12 +16,13 @@ namespace UIFunction
         Panel = 2,
         Slider = 4,
         Toggle = 8,
-        CheckBox = 16,
-        Text = 32,
-        SceneChange = 64,
-        Exit = 128,
-        Selection = 256,
-        Setup = 512,
-        Init = 1024
+        DropDown = 16,
+        CheckBox = 32,
+        Text = 64,
+        SceneChange = 128,
+        Exit = 256,
+        Selection = 512,
+        Setup = 1024,
+        Init = 2048
     }
 }
