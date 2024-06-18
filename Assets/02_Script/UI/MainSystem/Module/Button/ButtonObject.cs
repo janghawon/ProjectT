@@ -1,28 +1,16 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/*
-* Class: SliderObject
-* Author: 장하원
-* Created: 2024년 6월 18일 화요일
-* Description: 간단하게 슬라이더 기능 제작
-*/
-
 namespace UIFunction
 {
-    public class SliderObject : UIObject
+    public class ButtonObject : UIObject
     {
-        private Slider _slider;
-        public UnityAction<float> OnValueChange { get; set; }
+        [SerializeField] private Button _button;
+        public Button Button => _button;
 
-        private void Awake()
-        {
-            _slider = GetComponent<Slider>();
-            _slider.onValueChanged.AddListener(OnValueChange);
-        }
         public override void OnPointerClick(PointerEventData eventData)
         {
             base.OnPointerClick(eventData);
