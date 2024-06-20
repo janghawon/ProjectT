@@ -513,10 +513,7 @@ MonoBehaviour:
   _padding: 20
   _itemContent: {fileID: 8189122223681196789}
   _dropdownItemPrefab: {fileID: 49724250625730607, guid: d466fb85f16326b41a0babb8ffd7263a, type: 3}
-  _dropdownSelectionList:
-  - selectionName: asd
-  - selectionName: ddd
-  - selectionName: aaaaaaa
+  _dropdownSelectionList: []
 --- !u!1 &8969530946989050803
 GameObject:
   m_ObjectHideFlags: 0

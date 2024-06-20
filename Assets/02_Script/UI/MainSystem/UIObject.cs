@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.UI;
+using Extension;
 
 /*
 * Class: UIObject
@@ -13,7 +14,7 @@ using UnityEngine.UI;
 
 namespace UIFunction
 {
-    public class UIObject : ExtensionMono, 
+    public class UIObject : ExtensionMono,
     IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [SerializeField] private UIKeyword _myKeword;

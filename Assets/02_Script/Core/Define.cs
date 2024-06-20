@@ -18,11 +18,12 @@ namespace UIFunction
         Toggle = 8,
         DropDown = 16,
         CheckBox = 32,
-        Text = 64,
+        Label = 64,
         SceneChange = 128,
         Exit = 256,
         Selection = 512,
         Setup = 1024,
-        Init = 2048
+        Init = 2048,
+        Deco = 4096
     }
 }

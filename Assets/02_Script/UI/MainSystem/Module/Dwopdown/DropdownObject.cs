@@ -72,6 +72,21 @@ namespace UIFunction
 
             OnClickEvent += HandleEnableContentList;
         }
+        private void Start()
+        {
+            GenerateItemList();
+            if (_currentDropdownItem != null)
+            {
+                _currentDropdownItem.OnCancleAction?.Invoke();
+                _currentDropdownItem.Earasing();
+            }
+
+            _currentDropdownItem = _dropdownItemList[0];
+            _currentDropdownItem?.OnSelectAction?.Invoke();
+            _currentDropdownItem.Marking();
+
+            _selectionItemText.text = _dropdownItemList[0].SelectionName;
+        }
         public void ReloadScroll(int firstSelectedOrder)
         {
             GenerateItemList();
