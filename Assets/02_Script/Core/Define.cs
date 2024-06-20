@@ -5,7 +5,8 @@ namespace UIFunction
 {
     public enum SceneType
     {
-        Sample
+        Loading,
+        InGame
     }
 
     [Flags]

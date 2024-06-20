@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UIFunction;
 using UnityEngine;
 
-public class InGameUIContent : MonoBehaviour
+public class InGameUIContent : SceneUIContent
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void SceneUIEnd()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void SceneUIStart()
     {
-        
     }
 }

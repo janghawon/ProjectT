@@ -43,11 +43,11 @@ public class TarotCardProduction : MonoBehaviour
     public void AppearTartoCard(Transform tarotTrm)
     {
         tarotTrm.localScale = Vector3.one * 1.35f;
-        transform.rotation = Quaternion.Euler(0, 90, 30);
+        tarotTrm.rotation = Quaternion.Euler(0, 90, 30);
 
         Sequence seq = DOTween.Sequence();
         seq.Append(tarotTrm.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutBack));
-        seq.Join(tarotTrm.DOLocalRotateQuaternion(Quaternion.identity, 0.3f).SetEase(Ease.InOutBack));
+        seq.Join(tarotTrm.DOLocalRotateQuaternion(Quaternion.identity, 0.3f).SetEase(Ease.OutBack));
     }
 
     public void StartProduction(TarotCard[] tarotArr)
