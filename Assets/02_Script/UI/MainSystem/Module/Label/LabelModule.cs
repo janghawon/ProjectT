@@ -1,4 +1,5 @@
 using Extension;
+using Febucci.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,6 +19,9 @@ namespace UIFunction
     {
         [SerializeField] private TextMeshProUGUI _text;
         public TextMeshProUGUI Text => _text;
+
+        [SerializeField] private TextAnimator_TMP _animator;
+        public TextAnimator_TMP Animator => _animator;
 
         public void SetText(string text)
         {

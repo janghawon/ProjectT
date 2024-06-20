@@ -225,3 +225,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myKeword: 64
   _text: {fileID: 2133901876707599491}
+  _animator: {fileID: 5035713670905823595}

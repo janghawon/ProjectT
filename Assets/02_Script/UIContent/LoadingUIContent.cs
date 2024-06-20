@@ -4,6 +4,13 @@ using UnityEngine;
 using Extension;
 using UIFunction;
 
+/*
+* Class: LoadingUIContent
+* Author: 장하원
+* Created: 2024년 6월 20일 목요일
+* Description: 로딩 UI
+*/
+
 public class LoadingUIContent : SceneUIContent
 {
     private LabelModule _loadingLabel;
