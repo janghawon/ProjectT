@@ -675,9 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startSceneType: 1
-  _screenElementGroup:
-  - {fileID: 4778570188530681593, guid: 62098721a8420af45943d6d0750f721d, type: 3}
-  - {fileID: 6995810397505534371, guid: 6a17fb62c6965d14c844cdb7fc02b274, type: 3}
+  _screenElementGroup: []
 --- !u!4 &1577489449
 Transform:
   m_ObjectHideFlags: 0
@@ -825,9 +823,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5383450150586986429, guid: 6a17fb62c6965d14c844cdb7fc02b274, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449933608723850835, guid: 6a17fb62c6965d14c844cdb7fc02b274, type: 3}
+      propertyPath: _lerpValue
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 7772599325246556244, guid: 6a17fb62c6965d14c844cdb7fc02b274, type: 3}
       propertyPath: m_Name
       value: InGameUIContent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000338472128667487, guid: 6a17fb62c6965d14c844cdb7fc02b274, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

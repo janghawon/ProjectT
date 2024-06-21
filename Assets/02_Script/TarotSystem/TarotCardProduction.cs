@@ -15,6 +15,7 @@ public class TarotCardProduction : MonoBehaviour
     [Header("Setting")]
     [SerializeField] private float _idlingValue;
     [SerializeField] private float _hoveringValue;
+    [SerializeField] private float _lerpValue;
 
     [Header("Printing Value")]
     private bool _canProduction = false;
@@ -85,7 +86,9 @@ public class TarotCardProduction : MonoBehaviour
                 float tiltX = -offset.y;
                 float tiltY = offset.x;
 
-                _toProductionTarotArr[i].VisualTrm.localEulerAngles = new Vector3(tiltX, tiltY) * _hoveringValue;
+                Transform trm = _toProductionTarotArr[i].VisualTrm;
+
+                trm.localEulerAngles = new Vector3(tiltX, tiltY) * _hoveringValue;
             }
             else
             {
@@ -93,7 +96,11 @@ public class TarotCardProduction : MonoBehaviour
                 float cosX = Mathf.Cos((Time.fixedTime + _randValueArr[i]));
 
                 Transform trm = _toProductionTarotArr[i].VisualTrm;
-                trm.localEulerAngles = new Vector3(sinX, cosX, 0) * _idlingValue;
+
+                float lerpX = Mathf.LerpAngle(trm.localPosition.x, sinX, Time.fixedDeltaTime * _lerpValue);
+                float lerpY = Mathf.LerpAngle(trm.localPosition.y, cosX, Time.fixedDeltaTime * _lerpValue);
+
+                trm.localEulerAngles = new Vector3(lerpX, lerpY, 0) * _idlingValue;
             }
         }
     }
