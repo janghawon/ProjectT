@@ -1523,6 +1523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _idlingValue: 3
   _hoveringValue: 0.03
+  _lerpValue: 1500
 --- !u!1 &4058177646257132794
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,7 +2244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8279509803243672978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3668,7 +3669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1632395051571122273
 RectTransform:
   m_ObjectHideFlags: 0
