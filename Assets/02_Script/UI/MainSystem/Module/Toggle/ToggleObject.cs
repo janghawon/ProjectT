@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /*
 * Class: ToggleObject
@@ -18,7 +20,7 @@ namespace UIFunction
         private bool _isOnActivation;
         public bool Value => _isOnActivation;
 
-        private UIObject _toggleHandleObject;
+        [SerializeField] private UIObject _toggleHandleObject;
         private UIObject ToggleHandle => _toggleHandleObject;
 
         private bool _isInBehaviour = false;
@@ -79,14 +81,25 @@ namespace UIFunction
         }
         #endregion
 
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            base.OnPointerClick(eventData);
+        }
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            base.OnPointerEnter(eventData);
+        }
+        public override void OnPointerExit(PointerEventData eventData)
+        {
+            base.OnPointerExit(eventData);
+        }
+
         private void Awake()
         {
-            _toggleHandleObject = GetComponent<UIObject>();
             _toggleHandleObject.OnClickEvent += HandleToggleHandleClick;
 
             ToggleActivation(Value);
         }
-
         private void HandleToggleHandleClick()
         {
             if (_isInBehaviour) return;
@@ -94,7 +107,6 @@ namespace UIFunction
             _isOnActivation = !_isOnActivation;
             ToggleActivationBehaviour(_isOnActivation);
         }
-
         private void ToggleActivation(bool value)
         {
             (int, Color, Color) toggleValueGroup = GetTogglingValue(value);
@@ -105,13 +117,17 @@ namespace UIFunction
             _toggleHandleObject.Visual.color = toggleValueGroup.Item2;
             Visual.color = toggleValueGroup.Item3;
         }
-
         private void ToggleActivationBehaviour(bool value)
         {
             (int, Color, Color) toggleValueGroup = GetTogglingValue(value);
 
+            Sequence togglingSeq = DOTween.Sequence();
+            togglingSeq.SetEase(Ease.InCubic);
+            togglingSeq.Append(_toggleHandleObject.transform.DOLocalMoveX((_handleSideArea.sizeDelta.x * 0.5f) * toggleValueGroup.Item1, _toggleTime));
+            togglingSeq.Join(_toggleHandleObject.Visual.DOColor(toggleValueGroup.Item2, _toggleTime));
+            togglingSeq.Join(Visual.DOColor(toggleValueGroup.Item3, _toggleTime));
+            togglingSeq.AppendCallback(() => _isInBehaviour = false);
         }
-
         private (int, Color, Color) GetTogglingValue(bool value)
         {
             int temp = value ? 1 : -1;
