@@ -14,9 +14,6 @@ public class InGameUIContent : SceneUIContent
 
     public override void SceneUIStart()
     {
-        int exitButtonMask = 
-        UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Exit);
-
-        _exitBtnSetUpEvent?.Invoke(FindUIObject<ButtonObject>(exitButtonMask));
+        _exitBtnSetUpEvent?.Invoke(FindUIObject<ButtonObject>(UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Exit)));
     }
 }

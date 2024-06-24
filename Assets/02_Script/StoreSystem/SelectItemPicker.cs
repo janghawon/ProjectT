@@ -33,4 +33,11 @@ public class SelectItemPicker : MonoBehaviour
         _visualGroup.interactable = true;
         _visualGroup.DOFade(1, 0.2f);
     }
+
+    public void OutSelecting()
+    {
+        _currentItemElement?.OutSelecting();
+        _visualGroup.interactable = false;
+        _visualGroup.alpha = 0;
+    }
 }
