@@ -1,18 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DebugLobbyUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private TMP_InputField _input;
+
+    public async void CreateRoom()
     {
-        
+
+        bool v = await AppController.Instance.StartHostAsync(Guid.NewGuid().ToString(), Guid.NewGuid().ToString());
+
+        if (v)
+        {
+
+            NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Additive);
+
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void JoinRoom()
     {
-        
+
+        AppController.Instance.StartClientAsync(Guid.NewGuid().ToString(), _input.text);
+
     }
+ 
 }

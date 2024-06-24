@@ -74,6 +74,7 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
         {
 
             StartTurnLogic();
+            _applyTurnTime = _turnTime;
 
         }
 
