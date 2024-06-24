@@ -10,15 +10,22 @@ using UnityEngine;
 
 namespace Extension
 {
+    // MonoBehaviour를 상속받아 편하게 기능에 접근할 수 있도록 도와주는 확장 MonoBehaviour
     public abstract class ExtensionMono : MonoBehaviour
     {
-        public T FindUIObject<T>(int uiMask) where T : UIObject
+        public T FindUIObject<T>(UIKeyword uiMask) where T : UIObject
         {
             SceneUIContent content = UIManager.Instance.CurrentSceneUiObject;
             return content.FindUIObject<T>(uiMask);
         }
 
-        public UIObject[] FindAllUIObject<T>(int uiMask) where T : UIObject
+        public T FindUIObject<T>(string objectName) where T : UIObject
+        {
+            SceneUIContent content = UIManager.Instance.CurrentSceneUiObject;
+            return content.FindUIObject<T>(objectName);
+        }
+
+        public UIObject[] FindAllUIObject<T>(UIKeyword uiMask) where T : UIObject
         {
             SceneUIContent content = UIManager.Instance.CurrentSceneUiObject;
             return content.FindAllUIObject<T>(uiMask);

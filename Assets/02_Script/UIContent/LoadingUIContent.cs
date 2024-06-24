@@ -19,8 +19,7 @@ public class LoadingUIContent : SceneUIContent
 
     public override void SceneUIStart()
     {
-        int mask = UIManager.Instance.GetUIKewordMask(UIKeyword.Label, UIKeyword.Deco);
-        _loadingLabel = FindUIObject<LabelModule>(mask);
+        _loadingLabel = FindUIObject<LabelModule>(UIManager.Instance.GetUIKewordMask(UIKeyword.Label, UIKeyword.Deco));
 
         _loadingTextArr.Shuffle();
     }

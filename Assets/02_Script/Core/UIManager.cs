@@ -46,29 +46,24 @@ public class UIManager : MonoSingleton<UIManager>
 
     #region GetUIKewordMask
 
-    public int GetUIKewordMask(UIKeyword keword1)
+    public UIKeyword GetUIKewordMask(UIKeyword keword1, UIKeyword keword2)
     {
-        return (int)keword1;
+        return (keword1 |= keword2);
     }
 
-    public int GetUIKewordMask(UIKeyword keword1, UIKeyword keword2)
+    public UIKeyword GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3)
     {
-        return (int)(keword1 |= keword2);
+        return (keword1 |= keword2 |= keword3);
     }
 
-    public int GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3)
+    public UIKeyword GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3, UIKeyword keword4)
     {
-        return (int)(keword1 |= keword2 |= keword3);
+        return (keword1 |= keword2 |= keword3 |= keword4);
     }
 
-    public int GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3, UIKeyword keword4)
+    public UIKeyword GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3, UIKeyword keword4, UIKeyword keword5)
     {
-        return (int)(keword1 |= keword2 |= keword3 |= keword4);
-    }
-
-    public int GetUIKewordMask(UIKeyword keword1, UIKeyword keword2, UIKeyword keword3, UIKeyword keword4, UIKeyword keword5)
-    {
-        return (int)(keword1 |= keword2 |= keword3 |= keword4 |= keword5);
+        return (keword1 |= keword2 |= keword3 |= keword4 |= keword5);
     }
 
     #endregion
