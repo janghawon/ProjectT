@@ -32,7 +32,6 @@ public class TarotCardProduction : MonoBehaviour
         seq.Join(backFaceTrm.DOLocalRotateQuaternion(Quaternion.identity, 0.4f).SetEase(Ease.OutBack));
         seq.Append(backFaceTrm.DOScale(Vector3.one, 0.3f));
     }
-
     public void DisAppearBackFace(Transform backFaceTrm)
     {
         Sequence seq = DOTween.Sequence();
@@ -40,7 +39,6 @@ public class TarotCardProduction : MonoBehaviour
         seq.Join(backFaceTrm.DOLocalRotateQuaternion(Quaternion.Euler(0, 90, 30), 0.15f));
         seq.AppendCallback(() => Destroy(backFaceTrm.gameObject));
     }
-
     public void AppearTartoCard(Transform tarotTrm)
     {
         tarotTrm.localScale = Vector3.one * 1.35f;
@@ -50,7 +48,6 @@ public class TarotCardProduction : MonoBehaviour
         seq.Append(tarotTrm.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutBack));
         seq.Join(tarotTrm.DOLocalRotateQuaternion(Quaternion.identity, 0.3f).SetEase(Ease.OutBack));
     }
-
     public void StartProduction(TarotCard[] tarotArr)
     {
         _toProductionTarotArr = tarotArr;

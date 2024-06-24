@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Extension;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using UIFunction;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ActivationStore : MonoBehaviour
+public class ActivationStore : ExtensionMono
 {
     [SerializeField] private GameObject _volumeObj;
     [SerializeField] private UnityEvent _storeEnterEvent;
@@ -28,8 +29,14 @@ public class ActivationStore : MonoBehaviour
         _onStoreActivation += HandleEnterStore;
     }
 
-    public void ExitButtonSetUp(ButtonObject exitBtn)
+    private void Start()
     {
+        AddSetupCallback(ExitButtonSetUp);
+    }
+
+    public void ExitButtonSetUp()
+    {
+        ButtonModule exitBtn = FindUIObject<ButtonModule>(UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Exit));
         exitBtn.OnClickEvent += HandleExitStore;
     }
 

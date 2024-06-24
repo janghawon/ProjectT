@@ -8,12 +8,12 @@ using DG.Tweening;
 
 public class MenuUISystem : ExtensionMono
 {
-    private ButtonObject _menuButton;
+    private ButtonModule _menuButton;
     private bool _onPressedMenuBtn;
 
     private void Start()
     {
-        _menuButton = FindUIObject<ButtonObject>(UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Setup));
+        _menuButton = FindUIObject<ButtonModule>(UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Setup));
 
         SetupMenuButton();
     }
