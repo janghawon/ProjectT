@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Table : MonoBehaviour
@@ -14,14 +14,15 @@ public class Table : MonoBehaviour
     private void Awake()
     {
 
-        TurnManager.Instance.OnTurnChanged += HandleTurnChanged;
+        _ableTrms = _itemSpawnTrms.ToList();
+        SpawnAlcohol();
 
     }
 
     public bool SpawnItem(GameObject prefab)
     {
 
-        if (_ableTrms.Count <= 0) return false; 
+        if (_ableTrms.Count <= 0) return false;
 
         var trm = _ableTrms[Random.Range(0, _ableTrms.Count)];
         var obj = Instantiate(prefab, trm.position, Quaternion.identity).GetComponent<ItemInstance>();
@@ -36,18 +37,6 @@ public class Table : MonoBehaviour
         {
 
             _ableTrms.Add(trm);
-
-        }
-
-    }
-
-    private void HandleTurnChanged(ulong oldId, ulong newId)
-    {
-
-        if (TurnManager.Instance.MyTurn)
-        {
-
-            SpawnAlcohol();
 
         }
 

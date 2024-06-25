@@ -12,7 +12,6 @@ public class Alcohol : ItemInstance
 
         PlayerDataManager.Instance.SetAlcohol(RandomAlcohol());
         TurnManager.Instance.SkipTurn();
-        Destroy(gameObject);
 
     }
 

@@ -26,6 +26,7 @@ public abstract class ItemInstance : MonoBehaviour
         {
 
             UseItem();
+            OnItemUsed?.Invoke();
 
         }
 

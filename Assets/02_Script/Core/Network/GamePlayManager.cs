@@ -49,8 +49,7 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
         if (_table.SpawnItem(info.prefab))
         {
 
-            Debug.Log("¾Æ±î¿î ³» µ·");
-            //µ· ´Ù´Â ·ÎÁ÷
+            PlayerDataManager.Instance.AddGold(-info.price);
 
         }
 

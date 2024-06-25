@@ -144,8 +144,8 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
             if (isEnded)
             {
 
-                var data = PlayerDataManager.Instance.Data;
-                PlayerDataManager.Instance.AddHealth(-(int)data.state);
+                var data = PlayerDataManager.Instance[_turnPlayerId.Value];
+                PlayerDataManager.Instance.AddHealth(_turnPlayerId.Value, -(int)data.state);
 
             }
 

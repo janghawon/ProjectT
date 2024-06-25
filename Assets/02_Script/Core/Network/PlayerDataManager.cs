@@ -191,6 +191,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
         {
 
             AddGold(newId, 10);
+            SetAlcohol(newId, (AlcoholState)Random.Range(0, 2));
 
         }
 

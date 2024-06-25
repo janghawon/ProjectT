@@ -23,12 +23,16 @@ public class DebugLobbyUI : MonoBehaviour
 
         }
 
+        Destroy(gameObject);
+
     }
 
-    public void JoinRoom()
+    public async void JoinRoom()
     {
 
-        AppController.Instance.StartClientAsync(Guid.NewGuid().ToString(), _input.text);
+        await AppController.Instance.StartClientAsync(Guid.NewGuid().ToString(), _input.text);
+
+        Destroy(gameObject);
 
     }
  

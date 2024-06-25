@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: "\uB3C5\uADF9\uBB3C "
   visual: {fileID: 0}
   price: 10
+  prefab: {fileID: 8220263823966527361, guid: 925a67daa38a9f14587c57b326a56a7c, type: 3}
   info: "\uD3EC\uC158\uC744 \uC911\uB3C5 \uC0C1\uD0DC\uB85C\n\uBCC0\uC9C8\uC2DC\uD0B5\uB2C8\uB2E4. "

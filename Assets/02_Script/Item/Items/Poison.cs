@@ -8,6 +8,7 @@ public class Poison : ItemInstance
     {
 
         PlayerDataManager.Instance.SetAlcohol(GamePlayManager.Instance.EnemyClientId, AlcoholState.NotSafe);
+        Destroy(gameObject);
 
     }
 
