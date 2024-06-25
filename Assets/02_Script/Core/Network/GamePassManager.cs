@@ -7,7 +7,7 @@ using UnityEngine;
 public class GamePassManager : NetworkMonoSingleton<GamePassManager>
 {
 
-    public override void OnNetworkSpawn()
+    public void StartGamePass()
     {
 
         StartCoroutine(StartPass());

@@ -44,15 +44,6 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     public event TurnChange OnTurnChanged;
     public event TimeChange OnTimeChanged;
 
-    public override void OnNetworkSpawn()
-    {
-
-        _turnPlayerId.OnValueChanged += HandleTurnValueChanged;
-        _currentTurnTime.OnValueChanged += HandleTimeValueChanged;
-        _connectClientIds = NetworkManager.ConnectedClientsIds.ToList();
-
-    }
-
     private void HandleTimeValueChanged(int previousValue, int newValue)
     {
 
@@ -70,11 +61,15 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     public void Init()
     {
 
+        _turnPlayerId.OnValueChanged += HandleTurnValueChanged;
+        _currentTurnTime.OnValueChanged += HandleTimeValueChanged;
+
         if (IsServer)
         {
 
-            StartTurnLogic();
+            _connectClientIds = NetworkManager.ConnectedClientsIds.ToList();
             _applyTurnTime = _turnTime;
+            StartTurnLogic();
 
         }
 
