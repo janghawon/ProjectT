@@ -41,6 +41,8 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     public int CurrentTurnTime => _currentTurnTime.Value;
     public ulong TurnPlayerId => _turnPlayerId.Value;
 
+    public bool MyTurn => TurnPlayerId == NetworkManager.LocalClientId;
+
     public event TurnChange OnTurnChanged;
     public event TimeChange OnTimeChanged;
 
