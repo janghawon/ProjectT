@@ -15,5 +15,6 @@ public class ItemInfo : ScriptableObject
     public string itemName;
     public Sprite visual;
     public int price;
+    public GameObject prefab;
     [TextArea] public string info;
 }

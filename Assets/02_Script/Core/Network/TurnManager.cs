@@ -21,6 +21,11 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     private int _applyTurnTime;
 
     /// <summary>
+    /// 스킵 함?
+    /// </summary>
+    private bool _isSkipped;
+
+    /// <summary>
     /// 현재 턴의 시간
     /// </summary>
     private NetworkVariable<int> _currentTurnTime = new NetworkVariable<int>(
@@ -32,7 +37,7 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     /// 현재 턴인 클라 Id
     /// </summary>
     private NetworkVariable<ulong> _turnPlayerId = new NetworkVariable<ulong>(
-            default(ulong),
+            ulong.MaxValue,
             NetworkVariableReadPermission.Everyone,
             NetworkVariableWritePermission.Server);
 
@@ -81,7 +86,7 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     {
 
         _turnPlayerId.Value = GetRandomPlayerId();
-        StartCoroutine(TimePassCo());
+        StartCoroutine(TurnPassCo());
 
     }
 
@@ -101,31 +106,71 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
 
     }
 
-    private IEnumerator TimePassCo()
+    public void SkipTurn()
     {
 
-        var wait = new WaitForSecondsRealtime(1);
+        if (MyTurn)
+        {
+
+            SkipTurnServerRPC();
+
+        }
+
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SkipTurnServerRPC()
+    {
+
+        _isSkipped = true;
+
+    }
+
+    private IEnumerator TurnPassCo()
+    {
 
         while (true)
         {
 
-            var apply = _currentTurnTime.Value = _applyTurnTime;
+            bool isEnded = false;
 
-            for(int i = 0; i < apply; i++)
+            var co = StartCoroutine(TimePassCo(() => isEnded = true));
+
+            yield return new WaitUntil(() => isEnded || _isSkipped);
+
+            StopCoroutine(co);
+            _isSkipped = false;
+
+            if (isEnded)
             {
 
-                yield return wait;
-                _currentTurnTime.Value -= 1;
+                var data = PlayerDataManager.Instance.Data;
+                PlayerDataManager.Instance.AddHealth(-(int)data.state);
 
             }
 
-            yield return wait;
-
             ChangeTurn();
 
+        }
+
+    }
+
+    private IEnumerator TimePassCo(Action endCallback = null)
+    {
+
+        var wait = new WaitForSecondsRealtime(1);
+
+        var apply = _currentTurnTime.Value = _applyTurnTime;
+
+        for (int i = 0; i < apply; i++)
+        {
+
             yield return wait;
+            _currentTurnTime.Value -= 1;
 
         }
+
+        endCallback?.Invoke();
 
     }
 

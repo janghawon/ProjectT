@@ -8,7 +8,7 @@ public class DebugStart : MonoBehaviour
     public void StartPass()
     {
 
-        GamePassManager.Instance.StartGamePass();
+        GamePlayManager.Instance.StartGamePass();
 
     }
 
