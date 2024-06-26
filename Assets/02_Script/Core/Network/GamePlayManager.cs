@@ -17,7 +17,6 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     {
 
         StartPassClientRPC();
-        StartCoroutine(StartPass());
 
     }
 
@@ -27,6 +26,8 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 
         _table = FindObjectOfType<Table>();
         EnemyClientId = NetworkManager.ConnectedClientsIds.FirstOrDefault(x => x != NetworkManager.LocalClientId);
+
+        StartCoroutine(StartPass());
 
     }
 

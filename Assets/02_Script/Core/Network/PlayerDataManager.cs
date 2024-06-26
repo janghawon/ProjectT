@@ -175,10 +175,15 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
         _playerDatas.OnListChanged += HandleDataChanged;
         TurnManager.Instance.OnTurnChanged += HandleTurnChanged;
 
-        foreach (var item in NetworkManager.ConnectedClientsIds)
+        if (IsServer)
         {
 
-            _playerDatas.Add(CreatePlayerData(item));
+            foreach (var item in NetworkManager.ConnectedClientsIds)
+            {
+
+                _playerDatas.Add(CreatePlayerData(item));
+
+            }
 
         }
 
