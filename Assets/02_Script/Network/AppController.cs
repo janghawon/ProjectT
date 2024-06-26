@@ -5,6 +5,7 @@ using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AppController : MonoSingleton<AppController>
 {
@@ -44,7 +45,7 @@ public class AppController : MonoSingleton<AppController>
     private void OnInitComplete()
     {
 
-        ///¾ðÁ¨°¡
+        SceneManager.LoadScene("Main");
 
     }
 

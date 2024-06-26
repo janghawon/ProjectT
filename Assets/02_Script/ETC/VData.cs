@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+#if UNITY_EDITOR
 using VHierarchy;
 
 public class VData : VHierarchyDataComponent
 {
 
 }
+#endif
