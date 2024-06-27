@@ -33,23 +33,23 @@ namespace UIFunction
             }
         }
 
-        public Action OnClickEvent { get; set; }
-        public Action OnHoverEvent { get; set; }
-        public Action OnDesecendEvent { get; set; }
+        public Action<UIObject> OnClickEvent { get; set; }
+        public Action<UIObject> OnHoverEvent { get; set; }
+        public Action<UIObject> OnDesecendEvent { get; set; }
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {
-            OnClickEvent?.Invoke();
+            OnClickEvent?.Invoke(this);
         }
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
-            OnHoverEvent?.Invoke();
+            OnHoverEvent?.Invoke(this);
         }
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
-            OnDesecendEvent?.Invoke();
+            OnDesecendEvent?.Invoke(this);
         }
     }
 }

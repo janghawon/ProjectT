@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UIFunction;
 using UnityEngine;
 
 /*
@@ -54,8 +55,8 @@ public class TarotCardProduction : MonoBehaviour
 
         foreach (var tar in tarotArr)
         {
-            tar.OnHoverEvent += tar.TarotHoverAction;
-            tar.OnDesecendEvent += tar.TarotDescendAction;
+            tar.OnHoverEvent += TarotHoverAction;
+            tar.OnDesecendEvent += TarotDescendAction;
         }
 
         _randValueArr = new int[tarotArr.Length];
@@ -65,6 +66,21 @@ public class TarotCardProduction : MonoBehaviour
         }
 
         _canProduction = true;
+    }
+
+    private void TarotDescendAction(UIObject obj)
+    {
+        TarotCard tc = obj as TarotCard;
+
+        tc.VisualTrm.DOKill();
+        tc.VisualTrm.DOScale(Vector3.one, 0.2f);
+    }
+
+    private void TarotHoverAction(UIObject obj)
+    {
+        TarotCard tc = obj as TarotCard;
+        tc.VisualTrm.DOKill();
+        tc.VisualTrm.DOScale(Vector3.one * 1.05f, 0.2f).SetEase(Ease.OutBack);
     }
 
     private void FixedUpdate()

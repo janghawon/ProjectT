@@ -29,19 +29,19 @@ public class PurchaseSystem : ExtensionMono
         purchaseBtn.OnClickEvent += HandleButtonClick;
     }
 
-    private void HandleButtonHover()
+    private void HandleButtonHover(UIObject obj)
     {
         _purchaseLabel.Animator.referenceFontSize = 130;
         _purchaseLabel.SetText($"<bounce>{_purchaseText}</>");
     }
 
-    private void HandleButtonDesecend()
+    private void HandleButtonDesecend(UIObject obj)
     {
         _purchaseLabel.Animator.referenceFontSize = 200;
         _purchaseLabel.SetText($"<wave>{_purchaseText}</>");
     }
 
-    private void HandleButtonClick()
+    private void HandleButtonClick(UIObject obj)
     {
         _onPurchaseItemEvent?.Invoke(_selectItemInfo);
     }

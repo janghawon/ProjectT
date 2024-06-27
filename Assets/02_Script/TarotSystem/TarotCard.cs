@@ -41,10 +41,10 @@ public class TarotCard : UIObject
         _saveInfoText = info;
         _saveNameText = cardname;
 
-        NormaingLabelText();
+        NormaingLabelText(null);
     }
 
-    public void EmphasizeLabelText()
+    public void EmphasizeLabelText(UIObject obj)
     {
         _infoLabel.Animator.referenceFontSize = 150;
         _infoLabel.SetText($"<wiggle>{_saveInfoText}</>");
@@ -56,25 +56,13 @@ public class TarotCard : UIObject
         _nameLabel.Animator.typewriterStartsAutomatically = false;
     }
 
-    public void NormaingLabelText()
+    public void NormaingLabelText(UIObject obj)
     {
         _infoLabel.Animator.referenceFontSize = 200;
         _infoLabel.SetText($"<wave>{_saveInfoText}</>");
 
         _nameLabel.Animator.referenceFontSize = 200;
         _nameLabel.SetText($"<bounce>{_saveNameText}</>");
-    }
-
-    public void TarotHoverAction()
-    {
-        VisualTrm.DOKill();
-        VisualTrm.DOScale(Vector3.one * 1.05f, 0.2f).SetEase(Ease.OutBack);
-    }
-
-    public void TarotDescendAction()
-    {
-        VisualTrm.DOKill();
-        VisualTrm.DOScale(Vector3.one, 0.2f);
     }
 
     public override void OnPointerClick(PointerEventData eventData)

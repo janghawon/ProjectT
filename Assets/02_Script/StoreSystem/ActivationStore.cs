@@ -14,7 +14,7 @@ public class ActivationStore : ExtensionMono
     [SerializeField] private UnityEvent _storeExitEvent;
     private CanvasGroup _storeChannel;
 
-    private Action _onStoreActivation;
+    private Action<UIObject> _onStoreActivation;
 
     private void Awake()
     {
@@ -44,11 +44,11 @@ public class ActivationStore : ExtensionMono
     {
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            _onStoreActivation?.Invoke();
+            _onStoreActivation?.Invoke(null);
         }
     }
 
-    private void HandleEnterStore()
+    private void HandleEnterStore(UIObject obj)
     {
         _storeChannel.DOKill();
 
@@ -65,7 +65,7 @@ public class ActivationStore : ExtensionMono
         _storeEnterEvent?.Invoke();
     }
 
-    private void HandleExitStore()
+    private void HandleExitStore(UIObject obj)
     {
         _storeChannel.DOKill();
 

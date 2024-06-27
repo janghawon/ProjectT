@@ -707,10 +707,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072ad33fe57975b4696f3776f92ddad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSceneType: 1
+  _startSceneType: 0
   _screenElementGroup:
   - {fileID: 6995810397505534371, guid: 6a17fb62c6965d14c844cdb7fc02b274, type: 3}
   - {fileID: 4778570188530681593, guid: 62098721a8420af45943d6d0750f721d, type: 3}
+  - {fileID: 2017853682356923891, guid: e02f3ae840263054aa2f63b40b644e20, type: 3}
 --- !u!4 &1577489449
 Transform:
   m_ObjectHideFlags: 0

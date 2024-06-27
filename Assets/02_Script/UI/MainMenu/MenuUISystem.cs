@@ -5,55 +5,74 @@ using UIFunction;
 using Extension;
 using System;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class MenuUISystem : ExtensionMono
 {
-    private ButtonModule _menuButton;
+    private Tween _visualMaskingTween;
+    [SerializeField] Image _visualMask;
     private bool _onPressedMenuBtn;
 
     private void Start()
     {
-        _menuButton = FindUIObject<ButtonModule>(UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Setup));
+        ButtonModule menuButton = FindUIObject<ButtonModule>(UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Setup));
 
-        SetupMenuButton();
+        menuButton.OnHoverEvent += HandleHoverMenuBtn;
+        menuButton.OnDesecendEvent += HandleDesecendMenuBtn;
+        menuButton.OnClickEvent += HandleClickMenuBtn;
+
+        menuButton.OnClickEvent += HandleVisualMaskActive;
     }
 
-    private void SetupMenuButton()
+    private void HandleVisualMaskActive(UIObject obj)
     {
-        _menuButton.OnHoverEvent += HandleHoverMenuBtn;
-        _menuButton.OnDesecendEvent += HandleDesecendMenuBtn;
-        _menuButton.OnClickEvent += HandleClickMenuBtn;
+        _visualMaskingTween?.Kill();
+
+        _visualMaskingTween =
+        DOTween.To(() => _visualMask.fillAmount, x => _visualMask.fillAmount = x, 1, 0.3f);
+
+        obj.OnClickEvent -= HandleVisualMaskActive;
+        obj.OnClickEvent += HandleVisualMaskHide;
     }
 
-    private void HandleClickMenuBtn()
+    private void HandleVisualMaskHide(UIObject obj)
+    {
+        _visualMaskingTween?.Kill();
+
+        _visualMaskingTween =
+        DOTween.To(() => _visualMask.fillAmount, x => _visualMask.fillAmount = x, 0, 0.3f);
+
+        obj.OnClickEvent += HandleVisualMaskActive;
+        obj.OnClickEvent -= HandleVisualMaskHide;
+    }
+
+    private void HandleClickMenuBtn(UIObject obj)
     {
         _onPressedMenuBtn = !_onPressedMenuBtn;
 
         if(_onPressedMenuBtn)
         {
-            _menuButton.OnHoverEvent -= HandleHoverMenuBtn;
-            _menuButton.OnDesecendEvent -= HandleDesecendMenuBtn;
+            obj.OnHoverEvent -= HandleHoverMenuBtn;
+            obj.OnDesecendEvent -= HandleDesecendMenuBtn;
         }
         else
         {
-            _menuButton.OnHoverEvent += HandleHoverMenuBtn;
-            _menuButton.OnDesecendEvent += HandleDesecendMenuBtn;
+            obj.OnHoverEvent += HandleHoverMenuBtn;
+            obj.OnDesecendEvent += HandleDesecendMenuBtn;
         }
     }
-
-    private void HandleHoverMenuBtn()
+    private void HandleHoverMenuBtn(UIObject obj)
     {
-        _menuButton.transform.DOKill();
+        obj.transform.DOKill();
 
-        _menuButton.transform.DOScale(1.1f, 0.2f);
-        _menuButton.transform.DOLocalRotate(new Vector3(0, 0, 135), 0.3f).SetEase(Ease.OutQuart);
+        obj.transform.DOScale(1.1f, 0.2f);
+        obj.transform.DOLocalRotate(new Vector3(0, 0, 135), 0.3f).SetEase(Ease.OutQuart);
     }
-
-    private void HandleDesecendMenuBtn()
+    private void HandleDesecendMenuBtn(UIObject obj)
     {
-        _menuButton.transform.DOKill();
+        obj.transform.DOKill();
 
-        _menuButton.transform.DOScale(1f, 0.2f);
-        _menuButton.transform.DOLocalRotate(new Vector3(0, 0, 45), 0.3f).SetEase(Ease.OutQuart);
+        obj.transform.DOScale(1f, 0.2f);
+        obj.transform.DOLocalRotate(new Vector3(0, 0, 45), 0.3f).SetEase(Ease.OutQuart);
     }
 }

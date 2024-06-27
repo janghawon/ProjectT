@@ -1,6 +1,7 @@
 using Extension;
 using System.Collections;
 using System.Collections.Generic;
+using UIFunction;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -69,7 +70,7 @@ public class TarotCardCreator : MonoBehaviour
 
             tarot.OnHoverEvent += tarot.EmphasizeLabelText;
             tarot.OnDesecendEvent += tarot.NormaingLabelText;
-            tarot.OnClickEvent += () => _tarotCardSelectionEvent?.Invoke(tarot);
+            tarot.OnClickEvent += (UIObject obj) => _tarotCardSelectionEvent?.Invoke(tarot);
 
             tarotCards[i] = tarot;
         }
