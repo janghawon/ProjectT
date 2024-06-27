@@ -29,6 +29,7 @@ namespace Extension
         public T FindUIObject<T>(string objectName) where T : UIObject
         {
             SceneUIContent content = UIManager.Instance.CurrentSceneUiObject;
+            Debug.Log(content);
             return content.FindUIObject<T>(objectName);
         }
 

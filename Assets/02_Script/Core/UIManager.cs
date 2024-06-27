@@ -34,6 +34,7 @@ public class UIManager : MonoSingleton<UIManager>
     private Dictionary<SceneType, SceneUIContent> _sceneUIDic = new ();
     private SceneUIContent _currentSceneUIObject;
     public SceneUIContent CurrentSceneUiObject => _currentSceneUIObject;
+    public string CurrentActiceUI { get; private set; }
 
     private void Start()
     {
@@ -88,11 +89,19 @@ public class UIManager : MonoSingleton<UIManager>
             suObject.gameObject.name = _sceneUIDic[toChangeUIType].gameObject.name + "_[SceneUI]_";
 
             _currentSceneUIObject = suObject;
+            Debug.Log(_currentSceneUIObject);
 
             suObject.GenerateOnUIObject();
             suObject.SceneUIStart();
             StartCoroutine(CallbackDelay(suObject));
         }
+    }
+
+    public void ActiveUI(string name)
+    {
+
+        CurrentActiceUI = name;
+
     }
 
     private IEnumerator CallbackDelay(SceneUIContent suObject)
