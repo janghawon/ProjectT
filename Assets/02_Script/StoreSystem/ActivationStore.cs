@@ -81,4 +81,12 @@ public class ActivationStore : ExtensionMono
 
         _storeExitEvent?.Invoke();
     }
+
+    public void RegisterCallback(Action<UIObject> callback)
+    {
+
+        _onStoreActivation += callback;
+
+    }
+
 }

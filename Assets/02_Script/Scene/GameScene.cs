@@ -12,6 +12,7 @@ public class GameScene : MonoBehaviour
 
         yield return null;
 
+        UIManager.Instance.ChangeSceneUIOnChangeScene(UIFunction.SceneType.InGame);
         if (NetworkManager.Singleton.IsServer)
         {
 
