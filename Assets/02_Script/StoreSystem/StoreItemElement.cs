@@ -21,7 +21,9 @@ public class StoreItemElement : UIObject
     [SerializeField] private Image _itemProfile;
     [SerializeField] private GameObject _itemSelectingMask;
     public Action OnSelectThisItem { get; set; }
+
     private bool _onSelecting;
+    public bool OnSelecting => _onSelecting;
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -43,30 +45,9 @@ public class StoreItemElement : UIObject
         // _itemProfile.sprite = info.visual;
     }
 
-    public void HandleHoverAction()
+    public void InSelecting()
     {
-        if (_onSelecting) return;
-
-        transform.DOKill();
-        transform.DOScale(Vector3.one * 1.03f, 0.2f).SetEase(Ease.OutBack);
-    }
-
-    public void HandleDescentAction()
-    {
-        if (_onSelecting) return;
-
-        transform.DOKill();
-        transform.DOScale(Vector3.one, 0.2f);
-    }
-
-    public void HandleOnSelecting()
-    {
-        if(_onSelecting) return;
-
-        OnSelectThisItem?.Invoke();
-        HandleDescentAction();
         _onSelecting = true;
-
         _itemSelectingMask.SetActive(true);
     }
 

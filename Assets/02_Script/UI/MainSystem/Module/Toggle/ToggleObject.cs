@@ -100,7 +100,7 @@ namespace UIFunction
 
             ToggleActivation(Value);
         }
-        private void HandleToggleHandleClick()
+        private void HandleToggleHandleClick(UIObject obj)
         {
             if (_isInBehaviour) return;
 

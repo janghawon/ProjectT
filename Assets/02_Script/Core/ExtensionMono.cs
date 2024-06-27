@@ -1,3 +1,4 @@
+using System;
 using UIFunction;
 using UnityEngine;
 
@@ -13,6 +14,12 @@ namespace Extension
     // MonoBehaviour를 상속받아 편하게 기능에 접근할 수 있도록 도와주는 확장 MonoBehaviour
     public abstract class ExtensionMono : MonoBehaviour
     {
+        public void AddSetupCallback(Action callBack)
+        {
+            SceneUIContent content = UIManager.Instance.CurrentSceneUiObject;
+            content.SceneUIStartAction += callBack;
+        }
+
         public T FindUIObject<T>(UIKeyword uiMask) where T : UIObject
         {
             SceneUIContent content = UIManager.Instance.CurrentSceneUiObject;

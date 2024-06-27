@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UIFunction;
 using UnityEngine;
 
 /*
@@ -32,7 +33,6 @@ public class TarotCardProduction : MonoBehaviour
         seq.Join(backFaceTrm.DOLocalRotateQuaternion(Quaternion.identity, 0.4f).SetEase(Ease.OutBack));
         seq.Append(backFaceTrm.DOScale(Vector3.one, 0.3f));
     }
-
     public void DisAppearBackFace(Transform backFaceTrm)
     {
         Sequence seq = DOTween.Sequence();
@@ -40,7 +40,6 @@ public class TarotCardProduction : MonoBehaviour
         seq.Join(backFaceTrm.DOLocalRotateQuaternion(Quaternion.Euler(0, 90, 30), 0.15f));
         seq.AppendCallback(() => Destroy(backFaceTrm.gameObject));
     }
-
     public void AppearTartoCard(Transform tarotTrm)
     {
         tarotTrm.localScale = Vector3.one * 1.35f;
@@ -50,15 +49,14 @@ public class TarotCardProduction : MonoBehaviour
         seq.Append(tarotTrm.DOScale(Vector3.one, 0.3f).SetEase(Ease.InOutBack));
         seq.Join(tarotTrm.DOLocalRotateQuaternion(Quaternion.identity, 0.3f).SetEase(Ease.OutBack));
     }
-
     public void StartProduction(TarotCard[] tarotArr)
     {
         _toProductionTarotArr = tarotArr;
 
         foreach (var tar in tarotArr)
         {
-            tar.OnHoverEvent += tar.TarotHoverAction;
-            tar.OnDesecendEvent += tar.TarotDescendAction;
+            tar.OnHoverEvent += TarotHoverAction;
+            tar.OnDesecendEvent += TarotDescendAction;
         }
 
         _randValueArr = new int[tarotArr.Length];
@@ -68,6 +66,21 @@ public class TarotCardProduction : MonoBehaviour
         }
 
         _canProduction = true;
+    }
+
+    private void TarotDescendAction(UIObject obj)
+    {
+        TarotCard tc = obj as TarotCard;
+
+        tc.VisualTrm.DOKill();
+        tc.VisualTrm.DOScale(Vector3.one, 0.2f);
+    }
+
+    private void TarotHoverAction(UIObject obj)
+    {
+        TarotCard tc = obj as TarotCard;
+        tc.VisualTrm.DOKill();
+        tc.VisualTrm.DOScale(Vector3.one * 1.05f, 0.2f).SetEase(Ease.OutBack);
     }
 
     private void FixedUpdate()

@@ -5,6 +5,7 @@ namespace UIFunction
 {
     public enum SceneType
     {
+        Title,
         Loading,
         InGame
     }
