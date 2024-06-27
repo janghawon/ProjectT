@@ -8,6 +8,7 @@ public class Biscuit : ItemInstance
     {
 
         PlayerDataManager.Instance.AddHealth(1);
+        Destroy(gameObject);
 
     }
 
