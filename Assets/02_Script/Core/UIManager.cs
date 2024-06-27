@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UIFunction;
+using System.Collections;
 
 /*
 * Class: UIManager
@@ -86,10 +87,17 @@ public class UIManager : MonoSingleton<UIManager>
             SceneUIContent suObject = Instantiate(_sceneUIDic[toChangeUIType], CanvasTrm);
             suObject.gameObject.name = _sceneUIDic[toChangeUIType].gameObject.name + "_[SceneUI]_";
 
+            _currentSceneUIObject = suObject;
+
             suObject.GenerateOnUIObject();
             suObject.SceneUIStart();
-
-            _currentSceneUIObject = suObject;
+            StartCoroutine(CallbackDelay(suObject));
         }
+    }
+
+    private IEnumerator CallbackDelay(SceneUIContent suObject)
+    {
+        yield return new WaitForEndOfFrame();
+        suObject.SceneUIStartAction?.Invoke();
     }
 }

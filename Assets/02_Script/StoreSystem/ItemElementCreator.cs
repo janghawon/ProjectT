@@ -1,5 +1,8 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UIFunction;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -32,13 +35,42 @@ public class ItemElementCreator : MonoBehaviour
             var sie = Instantiate(_storeItemPrefab, _itemElementContent);
             sie.SetInfo(info);
 
-            sie.OnHoverEvent += sie.HandleHoverAction;
-            sie.OnDesecendEvent += sie.HandleDescentAction;
+            sie.OnHoverEvent += HandleHoverAction;
+            sie.OnDesecendEvent += HandleDescentAction;
 
-            sie.OnClickEvent += sie.HandleOnSelecting;
+            sie.OnClickEvent += HandleOnSelecting;
             sie.OnSelectThisItem += () => _selectItemEvent?.Invoke(sie, info);
 
             _storeItemElementArr[i] = sie;
         }
+    }
+
+    private void HandleOnSelecting(UIObject obj)
+    {
+        var sie = obj as StoreItemElement;
+        if (sie.OnSelecting) return;
+
+        sie.OnSelectThisItem?.Invoke();
+        HandleDescentAction(obj);
+        sie.InSelecting();
+    }
+
+    private void HandleDescentAction(UIObject obj)
+    {
+        var sie = obj as StoreItemElement;
+        if (sie.OnSelecting) return;
+
+        sie.transform.DOKill();
+        sie.transform.DOScale(Vector3.one, 0.2f);
+    }
+
+    private void HandleHoverAction(UIObject obj)
+    {
+        var sie = obj as StoreItemElement;
+        if (sie.OnSelecting) return;
+
+        sie.transform.DOKill();
+        sie.transform.DOScale(Vector3.one * 1.03f, 0.2f).SetEase(Ease.OutBack);
+        
     }
 }

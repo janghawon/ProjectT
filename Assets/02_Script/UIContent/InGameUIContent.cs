@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class InGameUIContent : SceneUIContent
 {
-    [SerializeField] private UnityEvent<ButtonObject> _exitBtnSetUpEvent;
+    [SerializeField] private UnityEvent _setUpEvent;
 
     public override void SceneUIEnd()
     {
@@ -14,6 +14,6 @@ public class InGameUIContent : SceneUIContent
 
     public override void SceneUIStart()
     {
-        _exitBtnSetUpEvent?.Invoke(FindUIObject<ButtonObject>(UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Exit)));
+        _setUpEvent?.Invoke();
     }
 }

@@ -107,7 +107,7 @@ namespace UIFunction
                 _itemContent.sizeDelta += new Vector2(0, _itemSize.y + _padding);
             }
         }
-        private void HandleEnableContentList()
+        private void HandleEnableContentList(UIObject obj)
         {
             if (_isLookList || _isOnScrolling) return;
 
@@ -122,7 +122,7 @@ namespace UIFunction
 
             HandleSwitchingListImage();
         }
-        private void HandleDisableContentList()
+        private void HandleDisableContentList(UIObject obj)
         {
             if(!_isLookList || _isOnScrolling) return;
 
@@ -193,7 +193,7 @@ namespace UIFunction
 
             _selectionItemText.text = dropdownItem.SelectionName;
 
-            OnClickEvent?.Invoke();
+            OnClickEvent?.Invoke(null);
         }
     }
 }

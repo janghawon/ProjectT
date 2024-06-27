@@ -1,12 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace UIFunction
 {
     // 씬의 존재하는 모든 UI를 자식으로 두는 부모가 갖고 있는 스크립트
     public abstract class SceneUIContent : MonoBehaviour
     {
+        public Action SceneUIStartAction { get; set; }
+
         // 스스로의 씬 타입 할당
         [SerializeField] private SceneType _uiType;
         public SceneType UIType => _uiType;

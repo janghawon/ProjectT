@@ -20,6 +20,8 @@ namespace UIFunction
         [SerializeField] private TextMeshProUGUI _text;
         public TextMeshProUGUI Text => _text;
 
+        public string TypedText => _text.text;
+
         [SerializeField] private TextAnimator_TMP _animator;
         public TextAnimator_TMP Animator => _animator;
 

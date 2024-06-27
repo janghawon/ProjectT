@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Extension;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,14 +7,14 @@ using UIFunction;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ActivationStore : MonoBehaviour
+public class ActivationStore : ExtensionMono
 {
     [SerializeField] private GameObject _volumeObj;
     [SerializeField] private UnityEvent _storeEnterEvent;
     [SerializeField] private UnityEvent _storeExitEvent;
     private CanvasGroup _storeChannel;
 
-    private Action _onStoreActivation;
+    private Action<UIObject> _onStoreActivation;
 
     private void Awake()
     {
@@ -28,8 +29,14 @@ public class ActivationStore : MonoBehaviour
         _onStoreActivation += HandleEnterStore;
     }
 
-    public void ExitButtonSetUp(ButtonObject exitBtn)
+    private void Start()
     {
+        AddSetupCallback(ExitButtonSetUp);
+    }
+
+    public void ExitButtonSetUp()
+    {
+        ButtonModule exitBtn = FindUIObject<ButtonModule>(UIManager.Instance.GetUIKewordMask(UIKeyword.Button, UIKeyword.Panel, UIKeyword.Exit));
         exitBtn.OnClickEvent += HandleExitStore;
     }
 
@@ -37,11 +44,11 @@ public class ActivationStore : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Tab) && TurnManager.Instance.MyTurn)
         {
-            _onStoreActivation?.Invoke();
+            _onStoreActivation?.Invoke(null);
         }
     }
 
-    private void HandleEnterStore()
+    private void HandleEnterStore(UIObject obj)
     {
         _storeChannel.DOKill();
 
@@ -58,7 +65,7 @@ public class ActivationStore : MonoBehaviour
         _storeEnterEvent?.Invoke();
     }
 
-    private void HandleExitStore()
+    private void HandleExitStore(UIObject obj)
     {
         _storeChannel.DOKill();
 
