@@ -16,26 +16,24 @@ public class Monitor : MonoBehaviour
     private void Awake()
     {
 
-        TurnManager.Instance.OnTurnChanged += HandleTurnChanged;
+        PlayerDataManager.Instance.OnPlayerDataChanged += HandleDataChanged;
 
     }
 
-    private void HandleTurnChanged(ulong oldId, ulong newId)
+    private void HandleDataChanged(PlayerData changeData)
     {
-
         var data = _isLocal ?
             PlayerDataManager.Instance.Data :
             PlayerDataManager.Instance[GamePlayManager.Instance.EnemyClientId];
 
         _healthRoot.Clear();
 
-        for(int i = 0; i < data.health; i++)
+        for (int i = 0; i < data.health; i++)
         {
 
             Instantiate(_healthPrefab, _healthRoot);
 
         }
-
     }
 
 }

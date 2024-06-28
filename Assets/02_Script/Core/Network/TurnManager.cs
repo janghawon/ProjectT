@@ -171,7 +171,6 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
             _currentTurnTime.Value -= 1;
 
         }
-
         endCallback?.Invoke();
 
     }

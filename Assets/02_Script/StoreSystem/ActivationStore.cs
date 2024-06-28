@@ -82,10 +82,11 @@ public class ActivationStore : ExtensionMono
         _storeExitEvent?.Invoke();
     }
 
-    public void RegisterCallback(Action<UIObject> callback)
+    public void RegisterCallback(Action<UIObject> callback, UnityAction exitCallBack)
     {
 
         _onStoreActivation += callback;
+        _storeExitEvent.AddListener(exitCallBack);
 
     }
 

@@ -14,7 +14,7 @@ using System.Collections;
 
 public class UIManager : MonoSingleton<UIManager>
 {
-    private RectTransform _canvasTrm;
+    [SerializeField] private RectTransform _canvasTrm;
     public RectTransform CanvasTrm
     {
         get

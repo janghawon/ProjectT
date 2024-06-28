@@ -5,6 +5,7 @@ using System.Linq;
 using UIFunction;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 {
@@ -29,15 +30,29 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
         _table = FindObjectOfType<Table>();
         EnemyClientId = NetworkManager.ConnectedClientsIds.FirstOrDefault(x => x != NetworkManager.LocalClientId);
 
-        FindObjectOfType<ActivationStore>().RegisterCallback(HandleActivationStore);
-
         StartCoroutine(StartPass());
+
+    }
+
+    public void GetUI()
+    {
+
+        FindObjectOfType<ActivationStore>().RegisterCallback(HandleActivationStore, HandleDisableStore);
+
+    }
+
+    private void HandleDisableStore()
+    {
+
+        IsUsingStore = false;
 
     }
 
     private void HandleActivationStore(UIObject @object)
     {
-        throw new NotImplementedException();
+
+        IsUsingStore = true;
+
     }
 
     private void Update()
@@ -68,8 +83,7 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     private IEnumerator StartPass()
     {
 
-        yield return new WaitForSeconds(1);
-
+        yield return null;
         var array = FindObjectsOfType<MonoBehaviour>().OfType<INetworkInitable>();
 
         foreach(var obj in array)
@@ -80,4 +94,13 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
         }
 
     }
+
+    public void PlayerDie(ulong diePlayerId)
+    {
+
+        PlayerPrefs.SetInt("DIE_PLAYER", (int)diePlayerId);
+        GameManager.Instance.LoadScene("Result");
+
+    }
+
 }

@@ -43,7 +43,12 @@ public class PurchaseSystem : ExtensionMono
 
     private void HandleButtonClick(UIObject obj)
     {
+
+        //юс╫ц
+        GamePlayManager.Instance.BuyItem(_selectItemInfo);
+
         _onPurchaseItemEvent?.Invoke(_selectItemInfo);
+
     }
 
     public void SetItemInfo(ItemInfo itemInfo)

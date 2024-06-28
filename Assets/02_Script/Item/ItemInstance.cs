@@ -22,7 +22,7 @@ public abstract class ItemInstance : MonoBehaviour
     protected virtual void OnMouseDown()
     { 
 
-        if (TurnManager.Instance.MyTurn)
+        if (TurnManager.Instance.MyTurn && !GamePlayManager.Instance.IsUsingStore)
         {
 
             UseItem();

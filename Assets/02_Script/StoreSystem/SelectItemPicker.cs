@@ -12,6 +12,8 @@ public class SelectItemPicker : MonoBehaviour
     [SerializeField] private Image _itemProfile;
     [SerializeField] private LabelModule _itemNameLabel;
     [SerializeField] private LabelModule _itemInfoLabel;
+    [SerializeField] private PurchaseSystem _purchaseSystem;
+
 
     private StoreItemElement _currentItemElement;
 
@@ -23,15 +25,14 @@ public class SelectItemPicker : MonoBehaviour
             _currentItemElement.OutSelecting();
         }
 
-        //Debug
-        GamePlayManager.Instance?.BuyItem(info);
-        //Debug
-
         _currentItemElement = element;
 
         //_itemProfile.sprite = info.visual;
         _itemNameLabel.SetText($"<wiggle>{info.itemName}</>");
         _itemInfoLabel.SetText($"<wave>{info.info}</>");
+        
+        //юс╫ц
+        _purchaseSystem.SetItemInfo(info);
 
         if (_visualGroup.alpha == 1) return;
 

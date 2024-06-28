@@ -31,6 +31,12 @@ public class RoomCreateHandler : MonoBehaviour
 
 
         }
+        else
+        {
+
+            HostSingle.Instance.GameManager.OnRoomCreated += HandleRoomCreated;
+
+        }
 
 
     }

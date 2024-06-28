@@ -7,16 +7,25 @@ using UnityEngine.SceneManagement;
 public class GameScene : MonoBehaviour
 {
 
+
     private IEnumerator Start()
     {
 
-        yield return null;
-
-        UIManager.Instance.ChangeSceneUIOnChangeScene(UIFunction.SceneType.InGame);
         if (NetworkManager.Singleton.IsServer)
         {
 
             GameManager.Instance.UnLoadScene("Lobby");
+
+        }
+
+        yield return null;
+
+        UIManager.Instance.ChangeSceneUIOnChangeScene(UIFunction.SceneType.InGame);
+        GamePlayManager.Instance.GetUI();
+
+        if (NetworkManager.Singleton.IsServer)
+        {
+
             GamePlayManager.Instance.StartGamePass();
 
         }

@@ -124,7 +124,14 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
         data.health += health;
         data.health = Mathf.Clamp(data.health, 0, _maxHealth);
 
-        Debug.Log($"Ã¤·Â ¹Ù²ñ : id /{targetClientId} , health / {data.health}");
+        Debug.Log($"Ã¤·Â ¹Ù²ñ : id / {targetClientId} , health / {data.health}");
+
+        if(data.health == 0)
+        {
+
+            GamePlayManager.Instance.PlayerDie(data.clientId);
+
+        }
 
         _playerDatas[idx] = data;
 
