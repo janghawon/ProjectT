@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Extension;
 using Febucci.UI;
 using System.Collections;
@@ -17,6 +18,8 @@ namespace UIFunction
 {
     public class LabelModule : UIObject
     {
+        [SerializeField] private float _fadingTime;
+
         [SerializeField] private TextMeshProUGUI _text;
         public TextMeshProUGUI Text => _text;
 
@@ -28,6 +31,18 @@ namespace UIFunction
         public void SetText(string text)
         {
             Text.text = text;
+        }
+
+        public void FadeDownText()
+        {
+            Text.DOKill();
+            Text.DOFade(0, _fadingTime);
+        }
+
+        public void FadeUpText(float value)
+        {
+            Text.DOKill();
+            Text.DOFade(value, _fadingTime);
         }
 
         public override void OnPointerClick(PointerEventData eventData)
