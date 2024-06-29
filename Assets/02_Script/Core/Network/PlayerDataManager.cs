@@ -44,6 +44,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
 {
 
     [SerializeField] private int _maxHealth = 3;
+    public int MaxHealth => _maxHealth;
     [SerializeField] private int _startGold = 20;
 
     private NetworkList<PlayerData> _playerDatas = new NetworkList<PlayerData>();
@@ -98,6 +99,31 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
 
         _playerDatas[idx] = data;
 
+    }
+
+    public int GetHealth(ulong targetClientId)
+    {
+        var data = this[targetClientId];
+        var idx = FindIndex(data);
+
+        return _playerDatas[idx].health;
+    }
+
+    public void SetHealth(ulong targetClientId, int health)
+    {
+        SetHealthServerRpc(targetClientId, health);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SetHealthServerRpc(ulong targetClientId, int health)
+    {
+        var data = this[targetClientId];
+        var idx = FindIndex(data);
+
+        data.health = health;
+        data.health = Mathf.Clamp(data.health, 0, _maxHealth);
+
+        _playerDatas[idx] = data;
     }
 
     [ServerRpc(RequireOwnership = false)]
