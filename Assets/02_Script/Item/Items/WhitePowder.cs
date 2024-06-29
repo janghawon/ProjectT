@@ -16,7 +16,7 @@ public class WhitePowder : ItemInstance
 
         }
 
-        Destroy(gameObject);
+        AnimationManager.Instance.PlayInputAnimation(transform, () => Destroy(gameObject), false);
 
     }
 

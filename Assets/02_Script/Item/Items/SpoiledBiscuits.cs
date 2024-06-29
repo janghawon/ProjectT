@@ -7,14 +7,19 @@ public class SpoiledBiscuits : ItemInstance
     protected override void UseItem()
     {
 
-        if(Random.value > 0.5f)
+        AnimationManager.Instance.PlayEatAnimation(transform, () =>
         {
 
-            PlayerDataManager.Instance.AddHealth(1);
+            if (Random.value > 0.5f)
+            {
 
-        }
+                PlayerDataManager.Instance.AddHealth(1);
 
-        Destroy(gameObject);
+            }
+
+            Destroy(gameObject);
+
+        });
 
     }
 

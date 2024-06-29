@@ -7,8 +7,14 @@ public class Biscuit : ItemInstance
     protected override void UseItem()
     {
 
-        PlayerDataManager.Instance.AddHealth(1);
-        Destroy(gameObject);
+        AnimationManager.Instance.PlayEatAnimation(transform, () =>
+        {
+
+
+            PlayerDataManager.Instance.AddHealth(1);
+            Destroy(gameObject);
+
+        });
 
     }
 

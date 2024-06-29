@@ -8,7 +8,7 @@ public class Antidote : ItemInstance
     {
 
         PlayerDataManager.Instance.SetAlcohol(AlcoholState.Safe);
-        Destroy(gameObject);
+        AnimationManager.Instance.PlayInputAnimation(transform, () => Destroy(gameObject), true);
 
     }
 
