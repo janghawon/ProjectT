@@ -8,7 +8,8 @@ namespace UIFunction
         Title,
         Loading,
         InGame,
-        Lobby
+        Lobby,
+        Result
     }
 
     [Flags]

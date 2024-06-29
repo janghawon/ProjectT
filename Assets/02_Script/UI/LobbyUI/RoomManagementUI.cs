@@ -74,13 +74,11 @@ public class RoomManagementUI : ExtensionMono
 
     private void HandleCreateRoomEvent(UIObject obj)
     {
-        Debug.Log($"{_roomName}, {_hostName}");
         _roomCreateEvent?.Invoke(_roomName, _hostName);
     }
 
     private void HandleJoinRoomEvent(UIObject obj)
     {
-        Debug.Log($"{_joinCode}, {_guestName}");
         _roomJoinEvent?.Invoke(_joinCode, _guestName);
     }
 

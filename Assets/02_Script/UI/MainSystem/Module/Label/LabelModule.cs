@@ -33,18 +33,6 @@ namespace UIFunction
             Text.text = text;
         }
 
-        public void FadeDownText()
-        {
-            Text.DOKill();
-            Text.DOFade(0, _fadingTime);
-        }
-
-        public void FadeUpText(float value)
-        {
-            Text.DOKill();
-            Text.DOFade(value, _fadingTime);
-        }
-
         public override void OnPointerClick(PointerEventData eventData)
         {
             base.OnPointerClick(eventData);

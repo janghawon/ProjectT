@@ -9,12 +9,28 @@ using UnityEngine.Events;
 
 public class ClipBoardUI : ExtensionMono
 {
+    [SerializeField] private LabelModule _exitLabel;
     [SerializeField] private UnityEvent _hoverEvent;
     [SerializeField] private UnityEvent _descendEvent;
     [SerializeField] private UnityEvent _clickEvent;
+    [SerializeField] private UnityEvent _revertEvent;
 
     public bool CanInteractable { get; set; } = true;
-    public Action<Transform> OnSelectAction { get; set; }
+    public Action<Transform> OnSelect { get; set; }
+    public LabelModule ExitLabel => _exitLabel;
+
+    private Vector3 _normalPos;
+    private Quaternion _normalRot;
+    private float _normalScale;
+
+    private void Start()
+    {
+        _normalPos = transform.localPosition;
+        _normalRot = transform.localRotation;
+        _normalScale = transform.localScale.x;
+
+        _exitLabel.gameObject.SetActive(false);
+    }
 
     private void OnMouseEnter()
     {
@@ -38,12 +54,31 @@ public class ClipBoardUI : ExtensionMono
 
     private void OnMouseDown()
     {
-        OnSelectAction?.Invoke(transform);
+        if (!CanInteractable) return;
+
+        OnSelect?.Invoke(transform);
         _clickEvent?.Invoke();
+        _exitLabel.gameObject?.SetActive(true);
     }
 
     public void ActiveFalse()
     {
-        transform.DOLocalMoveY(-37, 0.1f).SetEase(Ease.OutBack);
+        CanInteractable = false;
+        transform.DOLocalMoveY(-37, 0.2f).SetEase(Ease.OutBack);
+    }
+
+    public void NormalPositioning()
+    {
+        transform.DOKill();
+
+        transform.DOLocalMove(_normalPos, 0.2f).SetEase(Ease.OutBack);
+        transform.DOLocalRotateQuaternion(_normalRot, 0.2f).SetEase(Ease.OutBack);
+        transform.DOScale(_normalScale, 0.2f).OnComplete(() =>
+        {
+            CanInteractable = true;
+        });
+
+        _exitLabel.gameObject?.SetActive(false);
+        _revertEvent?.Invoke();
     }
 }

@@ -2,6 +2,8 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Emit;
+using UIFunction;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +19,16 @@ public class ClipBoardUIConteoller : MonoBehaviour
 
         foreach(var cb in _clipBoardUIArr)
         {
-            cb.OnSelectAction += HandleClickEvent;
+            cb.OnSelect += HandleClickEvent;
+            cb.ExitLabel.OnClickEvent += AllGenerateTrm;
+        }
+    }
+
+    private void AllGenerateTrm(UIObject obj)
+    {
+        foreach (var cb in _clipBoardUIArr)
+        {
+            cb.NormalPositioning();
         }
     }
 
