@@ -64,7 +64,7 @@ public class RoomManagementUI : ExtensionMono
 
     private void HandleDestroyCaret(Transform trm)
     {
-        GameObject calert = trm.Find("Text Area").Find("Caret").gameObject;
+        GameObject calert = trm.Find("Text Area")?.Find("Caret").gameObject;
 
         if(calert != null)
         {
