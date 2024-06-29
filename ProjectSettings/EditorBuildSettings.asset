@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/01_Scenes/Build/BootStrap.unity
     guid: f2a5a2cd4b8232b4a9a29f19023a0f85
   - enabled: 1
-    path: Assets/01_Scenes/Build/Main.unity
+    path: Assets/01_Scenes/Build/Lobby.unity
     guid: 7c2ce4c11b3f47e49ae7aabb3b236d17
   - enabled: 1
     path: Assets/01_Scenes/Build/Add/Game.unity

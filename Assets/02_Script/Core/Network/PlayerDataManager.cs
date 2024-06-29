@@ -20,6 +20,7 @@ public struct PlayerData : INetworkSerializable, IEquatable<PlayerData>
     public int gold;
     public AlcoholState state;
     public ulong clientId;
+    public int selectTarotID;
 
     public bool Equals(PlayerData other)
     {
@@ -35,7 +36,7 @@ public struct PlayerData : INetworkSerializable, IEquatable<PlayerData>
         serializer.SerializeValue(ref gold);
         serializer.SerializeValue(ref state);
         serializer.SerializeValue(ref clientId);
-
+        serializer.SerializeValue(ref selectTarotID);
     }
 
 }
@@ -71,6 +72,22 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
 
         }
 
+    }
+
+    public void SetTarotInfo(int tarotID)
+    {
+        SetTarotInfoServerRpc(OwnerClientId, tarotID);
+    }
+
+    [ServerRpc]
+    private void SetTarotInfoServerRpc(ulong targetClientId, int tarotID)
+    {
+        var data = this[targetClientId];
+        var idx = FindIndex(data);
+
+        data.selectTarotID = tarotID;
+
+        _playerDatas[idx] = data;
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -239,6 +256,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
             gold = _startGold,
             state = (AlcoholState)Random.Range(0, 2),
             clientId = clientId,
+            selectTarotID = 0
 
         };
 
