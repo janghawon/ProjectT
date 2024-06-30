@@ -20,13 +20,14 @@ public class GameScene : MonoBehaviour
 
         yield return null;
 
+        PlayerDataManager.Instance.CreateData();
         UIManager.Instance.ChangeSceneUIOnChangeScene(UIFunction.SceneType.InGame);
-        GamePlayManager.Instance.GetUI();
+        
 
         if (NetworkManager.Singleton.IsServer)
         {
 
-            GamePlayManager.Instance.StartGamePass();
+            //GamePlayManager.Instance.StartGamePass();
 
         }
 

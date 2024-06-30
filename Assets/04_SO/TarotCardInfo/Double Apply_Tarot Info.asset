@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be38c5d1b133b6c48b14b30ff7832332, type: 3}
   m_Name: Double Apply_Tarot Info
   m_EditorClassIdentifier: 
-  id: 0
+  id: 6
   visual: {fileID: 0}
   cardName: 
   info: 

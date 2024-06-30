@@ -29,7 +29,13 @@ public class InGameUIContent : SceneUIContent
         {
             SoundManager.Instance.PlaySFX(_pageClip);
 
-            _currentContent.SetActive(false);
+            if(_currentContent != null)
+            {
+
+                _currentContent.SetActive(false);
+
+            }
+
             _currentContent = _inGameContentArr[(int)type];
             _currentContent.SetActive(true);
         }

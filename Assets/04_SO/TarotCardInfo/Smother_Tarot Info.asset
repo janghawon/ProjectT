@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd88b96a2885b56459b432f9b2627669, type: 3}
   m_Name: Smother_Tarot Info
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   visual: {fileID: 0}
   cardName: 
   info: 

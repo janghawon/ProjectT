@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd939d661db77a74ba5e8b58a9da1d5d, type: 3}
   m_Name: Fast Winding_Tarot Info
   m_EditorClassIdentifier: 
-  id: 0
+  id: 5
   visual: {fileID: 0}
   cardName: 
   info: 

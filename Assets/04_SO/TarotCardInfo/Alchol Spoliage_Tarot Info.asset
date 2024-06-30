@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4dc5f7a5f18ff4d8ae9b7d82f3be62, type: 3}
   m_Name: Alchol Spoliage_Tarot Info
   m_EditorClassIdentifier: 
-  id: 0
+  id: 8
   visual: {fileID: 0}
   cardName: 
   info: 

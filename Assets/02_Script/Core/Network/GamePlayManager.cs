@@ -31,13 +31,14 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
         CheckSelectTarotServerRpc();
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void CheckSelectTarotServerRpc()
     {
         tarotSelectCount++;
-        if(tarotSelectCount == 2)
+        if(tarotSelectCount == NetworkManager.ConnectedClients.Count)
         {
             TarotClientDOwnClientRpc();
+            StartGamePass();
         }
     }
 
@@ -128,11 +129,21 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 
     }
 
-    public void GetUI()
+    public void ActivationStore(bool v)
     {
 
-        FindObjectOfType<ActivationStore>().RegisterCallback(HandleActivationStore, HandleDisableStore);
+        if (v)
+        {
 
+            HandleActivationStore(null);
+
+        }
+        else
+        {
+
+            HandleDisableStore();
+
+        }
     }
 
     private void HandleDisableStore()
@@ -214,6 +225,8 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 
         yield return null;
         var array = FindObjectsOfType<MonoBehaviour>().OfType<INetworkInitable>();
+
+        FindObjectOfType<InGameUIContent>().EnableContent(InGameType.sotre);
 
         foreach(var obj in array)
         {

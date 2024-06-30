@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1896af2c34a9343ad36cf08b70222e, type: 3}
   m_Name: Future Frediction_Tarot Info
   m_EditorClassIdentifier: 
-  id: 0
+  id: 4
   visual: {fileID: 0}
   cardName: 
   info: 

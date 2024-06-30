@@ -50,6 +50,7 @@ public class ActivationStore : ExtensionMono
         if(Input.GetKeyDown(KeyCode.Tab) && TurnManager.Instance.MyTurn)
         {
             _onStoreActivation?.Invoke(null);
+           
         }
     }
 
@@ -68,6 +69,7 @@ public class ActivationStore : ExtensionMono
         });
 
         _storeEnterEvent?.Invoke();
+        GamePlayManager.Instance.ActivationStore(true);
     }
 
     private void HandleExitStore(UIObject obj)
@@ -85,6 +87,7 @@ public class ActivationStore : ExtensionMono
         });
 
         _storeExitEvent?.Invoke();
+        GamePlayManager.Instance.ActivationStore(false);
     }
 
     public void RegisterCallback(Action<UIObject> callback, UnityAction exitCallBack)

@@ -43,7 +43,7 @@ public struct PlayerData : INetworkSerializable, IEquatable<PlayerData>
 
 }
 
-public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetworkInitable
+public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>
 {
 
     [SerializeField] private int _maxHealth = 3;
@@ -97,7 +97,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
         SetTatotCardServerRpc(clientID, tarotID);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void SetTatotCardServerRpc(ulong clientID, int tarotID)
     {
         var data = this[clientID];
@@ -221,7 +221,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
 
     }
 
-    public void Init()
+    public void CreateData()
     {
 
         _playerDatas.OnListChanged += HandleDataChanged;

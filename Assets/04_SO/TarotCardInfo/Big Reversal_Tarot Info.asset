@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5248630f1c9e64fa8a1a5ad4ea371e, type: 3}
   m_Name: Big Reversal_Tarot Info
   m_EditorClassIdentifier: 
-  id: 0
+  id: 7
   visual: {fileID: 0}
   cardName: 
   info: 
