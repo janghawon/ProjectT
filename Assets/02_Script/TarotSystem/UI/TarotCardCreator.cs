@@ -70,7 +70,9 @@ public class TarotCardCreator : MonoBehaviour
 
             tarot.OnHoverEvent += tarot.EmphasizeLabelText;
             tarot.OnDesecendEvent += tarot.NormaingLabelText;
+
             tarot.OnClickEvent += (UIObject obj) => _tarotCardSelectionEvent?.Invoke(tarot);
+
 
             tarotCards[i] = tarot;
         }
