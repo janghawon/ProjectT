@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5248630f1c9e64fa8a1a5ad4ea371e, type: 3}
-  m_Name: Big Reversal_Tarot Info
+  m_Script: {fileID: 11500000, guid: ebf78927ca86ce54cb3ad5ae0171306f, type: 3}
+  m_Name: Pierce The Heart_Tarot Info
   m_EditorClassIdentifier: 
+  id: 0
   visual: {fileID: 21300000, guid: 886ab0c0759184a4d8dc5c5afad0fd73, type: 3}
   cardName: "\uC2EC\uC7A5 \uB6AB\uAE30 "
   info: "\uC591 \uD50C\uB808\uC774\uC5B4\uC758 \uCCB4\uB825\uC744\n\uD558\uB098 \uC190\uC2E4\uC2DC\uD0B5\uB2C8\uB2E4. "
