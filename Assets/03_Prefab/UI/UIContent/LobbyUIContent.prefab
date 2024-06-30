@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiType: 3
+  _sceneAuido: {fileID: 8300000, guid: ebb3286cfc254404c8e381531cbd3f5e, type: 3}
 --- !u!114 &5404177412684240114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,6 +750,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 321
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 1613995577686242901}
   _animator: {fileID: 1558006434142494859}
@@ -2146,6 +2151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 3928739391824671153}
   _animator: {fileID: 445147940590883964}
@@ -2405,6 +2414,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0.2
   _text: {fileID: 2704175594828935465}
   _animator: {fileID: 6241781887373518794}
@@ -4803,6 +4816,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 8655933686890420371}
   _animator: {fileID: 7779171611916127955}
@@ -4986,6 +5003,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 2340847380440780821}
   _animator: {fileID: 6879272325684429391}

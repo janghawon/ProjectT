@@ -12,6 +12,14 @@ using Extension;
 *              클릭, 호버, 디센드 시 이벤트 관리
 */
 
+[Serializable]
+public struct UISFX
+{
+    public AudioClip clickSFX;
+    public AudioClip hoverSFX;
+    public AudioClip descendSFX;
+}
+
 namespace UIFunction
 {
     public class UIObject : ExtensionMono,
@@ -33,22 +41,33 @@ namespace UIFunction
             }
         }
 
+        public UISFX uiSFX;
+
         public Action<UIObject> OnClickEvent { get; set; }
         public Action<UIObject> OnHoverEvent { get; set; }
         public Action<UIObject> OnDesecendEvent { get; set; }
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {
+            if(uiSFX.clickSFX != null)
+                SoundManager.Instance.PlaySFX(uiSFX.clickSFX);
+
             OnClickEvent?.Invoke(this);
         }
 
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
+            if (uiSFX.hoverSFX != null)
+                SoundManager.Instance.PlaySFX(uiSFX.hoverSFX);
+
             OnHoverEvent?.Invoke(this);
         }
 
         public virtual void OnPointerExit(PointerEventData eventData)
         {
+            if (uiSFX.descendSFX != null)
+                SoundManager.Instance.PlaySFX(uiSFX.descendSFX);
+
             OnDesecendEvent?.Invoke(this);
         }
     }

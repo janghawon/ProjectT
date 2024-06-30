@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FastWinding_TarotInfo : MonoBehaviour
+[CreateAssetMenu(menuName = "SO/TarotCardInfo/FastWinding")]
+public class FastWinding_TarotInfo : TarotCardInfo
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void ApplyTarotEffect()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        TurnManager.Instance.SetTurnCount(3);
     }
 }

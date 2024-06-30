@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiType: 1
+  _sceneAuido: {fileID: 8300000, guid: ebb3286cfc254404c8e381531cbd3f5e, type: 3}
   _loadingTextArr:
   - Back On
   - My Pleasure
@@ -419,6 +420,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 6407403475791948973}
   _animator: {fileID: 0}
 --- !u!1 &1942385045933676665
@@ -1205,6 +1211,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 4160
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 5775712597848713559}
   _animator: {fileID: 0}
 --- !u!1 &8394237393414605716

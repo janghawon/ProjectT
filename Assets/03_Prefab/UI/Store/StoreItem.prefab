@@ -471,6 +471,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 0
+  uiSFX:
+    clickSFX: {fileID: 8300000, guid: e18db393452964e469ba2cdfc7e249c9, type: 3}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _itemNameLabel: {fileID: 1263430493037401848}
   _itemPriceLabel: {fileID: 6495554535672525023}
   _itemProfile: {fileID: 0}
@@ -699,6 +703,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 1051751321775479714}
   _animator: {fileID: 5188493199514192131}
 --- !u!1 &4014540771940703809
@@ -791,6 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _floatingValue: 0.1
   _floatingSpeed: 2
+  _useRandom: 0
 --- !u!1 &4059411286157007726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1501,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 71550002054943984}
   _animator: {fileID: 4897405860747427053}
 --- !u!1 &9187275446667407912

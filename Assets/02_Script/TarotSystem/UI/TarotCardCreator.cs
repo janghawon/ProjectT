@@ -28,6 +28,7 @@ public class TarotCardCreator : MonoBehaviour
     [SerializeField] private UnityEvent<Transform> _tarotCardAppearEvent;
     [SerializeField] private UnityEvent<TarotCard[]> _tarotCardProductionEvent;
     [SerializeField] private UnityEvent<TarotCard, TarotCard[]> _tarotCardSelectionEvent;
+    [SerializeField] private UnityEvent<int> _connectTarotEffectionEvent;
 
     private void Start()
     {
@@ -72,11 +73,12 @@ public class TarotCardCreator : MonoBehaviour
             tarot.OnHoverEvent += tarot.EmphasizeLabelText;
             tarot.OnDesecendEvent += tarot.NormaingLabelText;
 
-            //tarot.OnClickEvent += (UIObject obj) =>
-            //PlayerDataManager.Instance.SetTarotCard
-            //(NetworkManager.Singleton.LocalClientId, tarot.Info.id);
+            tarot.OnClickEvent += (UIObject obj) =>
+            PlayerDataManager.Instance.SetTarotCard
+            (NetworkManager.Singleton.LocalClientId, tarot.Info.id);
 
-            tarot.OnClickEvent += tarot.OnClickEvent += (u) => tarot.CanSelect = true;
+            tarot.OnClickEvent += (u) => tarot.CanSelect = true;
+            tarot.OnClickEvent += (u) => _connectTarotEffectionEvent?.Invoke(tarot.Info.id);
 
             tarotCards[i] = tarot;
         }

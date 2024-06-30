@@ -17,10 +17,35 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     [SerializeField] private Table _table;
     [SerializeField] private List<GameObject> _disablePanel;
 
+    private int tarotSelectCount;
+
     private List<ItemInstance> _enemyInstanceList = new();
 
     public ulong EnemyClientId { get; private set; }
     public bool IsUsingStore { get; private set; }
+
+    public Action OnTarotClientDown { get; set; }
+
+    public void CheckSelectTarot()
+    {
+        CheckSelectTarotServerRpc();
+    }
+
+    [ServerRpc]
+    private void CheckSelectTarotServerRpc()
+    {
+        tarotSelectCount++;
+        if(tarotSelectCount == 2)
+        {
+            TarotClientDOwnClientRpc();
+        }
+    }
+
+    [ClientRpc]
+    private void TarotClientDOwnClientRpc()
+    {
+        OnTarotClientDown?.Invoke();
+    }
 
     public void StartGamePass()
     {
@@ -84,21 +109,20 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void OpenItemServerRPC()
+    public void SetOpenItemServerRPC(bool isOpen)
     {
-
-        OpenItemClientRPC();
+        SetOpenItemClientRPC(isOpen);
 
     }
 
     [ClientRpc]
-    public void OpenItemClientRPC()
+    public void SetOpenItemClientRPC(bool isOpen)
     {
 
         foreach(var item in _disablePanel)
         {
 
-            item.gameObject.SetActive(false);
+            item.gameObject.SetActive(!isOpen);
 
         }
 
@@ -122,19 +146,6 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     {
 
         IsUsingStore = true;
-
-    }
-
-    private void Update()
-    {
-
-        //Debug
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-
-            OpenItemServerRPC();
-
-        }
 
     }
 

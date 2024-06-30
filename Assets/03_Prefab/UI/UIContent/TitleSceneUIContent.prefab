@@ -299,6 +299,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 192
+  uiSFX:
+    clickSFX: {fileID: 8300000, guid: e18db393452964e469ba2cdfc7e249c9, type: 3}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 6992032547596867732}
   _animator: {fileID: 4040016095060608256}
 --- !u!1 &6533768972986923119
@@ -622,6 +627,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 7710216189545667968}
   _animator: {fileID: 1086475184098178728}
 --- !u!1 &7192290333519667404
@@ -848,6 +858,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 8300000, guid: e18db393452964e469ba2cdfc7e249c9, type: 3}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 8197561796175565258}
   _animator: {fileID: 8721226274402483899}
 --- !u!1 &7337295240531856248
@@ -956,6 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiType: 0
+  _sceneAuido: {fileID: 8300000, guid: ebb3286cfc254404c8e381531cbd3f5e, type: 3}
 --- !u!1 &7578552139927088032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,5 +1288,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 7946314783819397149}
   _animator: {fileID: 2274988853757346798}

@@ -14,6 +14,8 @@ namespace UIFunction
         [SerializeField] private SceneType _uiType;
         public SceneType UIType => _uiType;
 
+        [SerializeField] protected AudioClip _sceneAuido;
+
         // 자식 중 존재하는 UI를 담은 리스트
         private List<UIObject> _childUIList = new List<UIObject>();
 

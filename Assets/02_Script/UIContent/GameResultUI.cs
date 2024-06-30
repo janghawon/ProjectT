@@ -58,6 +58,9 @@ public class GameResultUI : SceneUIContent
 
     public override void SceneUIStart()
     {
+        if(_sceneAuido != null)
+            SoundManager.Instance.PlayBGM(_sceneAuido);
+
         LabelModule backLabel = FindUIObject<LabelModule>("BackLabel");
 
         backLabel.OnClickEvent += (v) =>

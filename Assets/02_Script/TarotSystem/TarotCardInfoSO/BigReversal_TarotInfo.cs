@@ -8,12 +8,6 @@ public class BigReversal_TarotInfo : TarotCardInfo
 {
     public override void ApplyTarotEffect()
     {
-        SwapHealthServerRpc();
-    }
-
-    [ServerRpc]
-    private void SwapHealthServerRpc()
-    {
         ulong clientID = GamePlayManager.Instance.EnemyClientId;
         ulong hostID = NetworkManager.Singleton.LocalClientId;
 
