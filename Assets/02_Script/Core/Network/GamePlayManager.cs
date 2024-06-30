@@ -65,6 +65,37 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 
     }
 
+    public void AllClientGetItem(ItemInfo itemInfo)
+    {
+        AllClientGetItemClientRpc(itemInfo.itemName);
+    }
+
+    [ClientRpc]
+    private void AllClientGetItemClientRpc(string itemName)
+    {
+        _table.SpawnItem(ItemManager.Instance.GetItem(itemName).prefab);
+    }
+
+    public void GetRandomItem()
+    {
+        GetRandomItemClientRpc();
+    }
+
+    [ClientRpc]
+    private void GetRandomItemClientRpc()
+    {
+        var item = ItemManager.Instance.GetRandomItem();
+
+        if(_table.SpawnItem(item.prefab))
+        {
+            Debug.Log($"Sucessful SpawnItem : {item.itemName}");
+        }
+        else
+        {
+            Debug.Log($"Failure SpawnItem : {item.itemName}");
+        }
+    }
+
     private IEnumerator StartPass()
     {
 
