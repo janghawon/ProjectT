@@ -71,7 +71,6 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 
         var obj = _enemyInstanceList.Find(x => x.GUID == Guid.Parse(guid.ToString()));
 
-        Debug.Log(obj);
 
         if(obj != null)
         {

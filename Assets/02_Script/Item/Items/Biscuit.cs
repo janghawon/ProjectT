@@ -10,7 +10,7 @@ public class Biscuit : ItemInstance
         AnimationManager.Instance.PlayEatAnimation(transform, () =>
         {
 
-
+            FeedbackManager.Instance.PlayFeedback("Yamy");
             PlayerDataManager.Instance.AddHealth(1);
             Destroy(gameObject);
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000017033939, g: 0.000000025772884, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.000017033932, g: 0.000000025772884, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7619,6 +7619,7 @@ GameObject:
   - component: {fileID: 1974040683}
   - component: {fileID: 1974040682}
   - component: {fileID: 1974040684}
+  - component: {fileID: 1974040685}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -7673,6 +7674,20 @@ MonoBehaviour:
   _poolInfoGroup:
     poolParent: {fileID: 0}
     poolListGroup: []
+--- !u!114 &1974040685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974040681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5727e50742293ac4ca9b1f5fdeaf0d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tarotContainer:
+  - {fileID: 11400000, guid: 2da866a8474bf8849af4816c61ff89d5, type: 2}
 --- !u!1 &2029396013
 GameObject:
   m_ObjectHideFlags: 0

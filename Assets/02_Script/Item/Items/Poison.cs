@@ -8,7 +8,13 @@ public class Poison : ItemInstance
     {
 
         PlayerDataManager.Instance.SetAlcohol(GamePlayManager.Instance.EnemyClientId, AlcoholState.NotSafe);
-        AnimationManager.Instance.PlayInputAnimation(transform, () => Destroy(gameObject), false);
+        AnimationManager.Instance.PlayInputAnimation(transform, () =>
+        {
+
+            FeedbackManager.Instance.PlayFeedback("Aya");
+            Destroy(gameObject);
+
+        }, false);
 
     }
 
