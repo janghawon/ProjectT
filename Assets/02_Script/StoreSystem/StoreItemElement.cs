@@ -42,7 +42,7 @@ public class StoreItemElement : UIObject
     {
         _itemNameLabel.SetText(info.itemName);
         _itemPriceLabel.SetText($"<pend>{info.price}</>");
-        // _itemProfile.sprite = info.visual;
+        _itemProfile.sprite = info.visual;
     }
 
     public void InSelecting()

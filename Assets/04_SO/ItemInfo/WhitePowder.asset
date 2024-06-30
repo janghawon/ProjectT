@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WhitePowder
   m_EditorClassIdentifier: 
   itemName: "\uD770\uC0C9 \uAC00\uB8E8"
-  visual: {fileID: 0}
+  visual: {fileID: 21300000, guid: 4cf9e1b90f88697468dda67a977ffa2e, type: 3}
   price: 10
   prefab: {fileID: 8220263823966527361, guid: 6c54b69933bba5d46aab8ab4512238a6, type: 3}
   info: "\uD3EC\uC158\uC758 \uC0C1\uD0DC\uB97C\n\uBC18\uC804\uC2DC\uD0B5\uB2C8\uB2E4. "

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CrystalBall
   m_EditorClassIdentifier: 
   itemName: "\uC218\uC815\uAD6C"
-  visual: {fileID: 0}
+  visual: {fileID: 21300000, guid: 161131a27fc7c3440a4d33c7a6a07ca7, type: 3}
   price: 30
   prefab: {fileID: 8220263823966527361, guid: 67ee245b4f193a045947392bfdf77917, type: 3}
   info: "\uD3EC\uC158\uC758 \uC0C1\uD0DC\uB97C\n\uD655\uC778\uD569\uB2C8\uB2E4."

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spoiled_Biscuit
   m_EditorClassIdentifier: 
   itemName: "\uC0C1\uD55C \uBE44\uC2A4\uD0B7 "
-  visual: {fileID: 0}
+  visual: {fileID: 21300000, guid: 8822e1ae23630c343abe60d49d3ddd07, type: 3}
   price: 20
   prefab: {fileID: 7464923400297996959, guid: 66555deaa5b529a49a5d6584117a1dbe, type: 3}
   info: "50% \uD655\uB960\uB85C \uCCB4\uB825\uC744\n1 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
