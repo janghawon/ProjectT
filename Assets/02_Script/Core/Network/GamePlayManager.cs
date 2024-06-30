@@ -15,6 +15,7 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     [SerializeField] private List<ItemInfo> _items;
     [SerializeField] private Table _enemyTable;
     [SerializeField] private Table _table;
+    [SerializeField] private List<GameObject> _disablePanel;
 
     private List<ItemInstance> _enemyInstanceList = new();
 
@@ -83,6 +84,27 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void OpenItemServerRPC()
+    {
+
+        OpenItemClientRPC();
+
+    }
+
+    [ClientRpc]
+    public void OpenItemClientRPC()
+    {
+
+        foreach(var item in _disablePanel)
+        {
+
+            item.gameObject.SetActive(false);
+
+        }
+
+    }
+
     public void GetUI()
     {
 
@@ -111,7 +133,7 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
 
-            BuyItem(_debugItem);
+            OpenItemServerRPC();
 
         }
 
@@ -119,6 +141,8 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 
     public void BuyItem(ItemInfo info)
     {
+
+        if (PlayerDataManager.Instance.Data.gold < info.price) return;
 
         if (SpawnItem(info))
         {
@@ -172,7 +196,12 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     public void CheckEndGame()
     {
 
-        Debug.Log("³¡");
+        var data = PlayerDataManager.Instance.Data;
+        var enemyData = PlayerDataManager.Instance[EnemyClientId];
+
+        var h = data.health > enemyData.health ? enemyData.clientId : data.clientId;
+
+        PlayerDie(h);
 
     }
 
