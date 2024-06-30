@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba5248630f1c9e64fa8a1a5ad4ea371e, type: 3}
-  m_Name: New Big Reversal_Tarot Info
+  m_Name: Big Reversal_Tarot Info
   m_EditorClassIdentifier: 
   visual: {fileID: 21300000, guid: 886ab0c0759184a4d8dc5c5afad0fd73, type: 3}
   cardName: "\uC2EC\uC7A5 \uB6AB\uAE30 "

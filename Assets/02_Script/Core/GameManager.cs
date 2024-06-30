@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /*
 * Class: GameManager
@@ -22,6 +25,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Awake()
     {
         MakePool();
+
     }
 
     private void MakePool()
@@ -36,4 +40,20 @@ public class GameManager : MonoSingleton<GameManager>
             }
         }
     }
+
+    public void LoadScene(string name)
+    {
+
+        NetworkManager.Singleton.SceneManager.LoadScene(name, LoadSceneMode.Additive);
+
+    }
+
+    public void UnLoadScene(string name)
+    {
+
+        NetworkManager.Singleton.SceneManager.UnloadScene(SceneManager.GetSceneByName(name));
+
+    }
+
+
 }

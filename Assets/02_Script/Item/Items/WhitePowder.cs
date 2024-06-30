@@ -12,9 +12,11 @@ public class WhitePowder : ItemInstance
         if(state != AlcoholState.Safe)
         {
 
-            PlayerDataManager.Instance.SetAlcohol(GamePlayManager.Instance.EnemyClientId, state);
+            PlayerDataManager.Instance.SetAlcohol(GamePlayManager.Instance.EnemyClientId, AlcoholState.VeryNotSafe);
 
         }
+
+        Destroy(gameObject);
 
     }
 

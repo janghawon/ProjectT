@@ -34,6 +34,7 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - SHADOWCASTER
+  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -308,4 +309,3 @@ Material:
     - _TintColor: {r: 1, g: 1, b: 1, a: 0.5686275}
     - _VertexAnimationFrequency: {r: 2.5, g: 2.5, b: 2.5, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1

@@ -88,6 +88,7 @@ public class UIManager : MonoSingleton<UIManager>
             suObject.gameObject.name = _sceneUIDic[toChangeUIType].gameObject.name + "_[SceneUI]_";
 
             _currentSceneUIObject = suObject;
+            Debug.Log(_currentSceneUIObject);
 
             suObject.GenerateOnUIObject();
             suObject.SceneUIStart();

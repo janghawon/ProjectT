@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 4039240601472967534}
   - component: {fileID: 8946437709543804642}
   m_Layer: 5
-  m_Name: GaameResultUI
+  m_Name: GameResultUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

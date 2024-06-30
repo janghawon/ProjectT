@@ -4,6 +4,8 @@ using UnityEngine;
 using UIFunction;
 using UnityEngine.UI;
 using System;
+using Unity.Netcode;
+using DG.Tweening;
 
 public enum ResultType
 {
@@ -26,6 +28,8 @@ public class GameResultUI : SceneUIContent
     [Header("Result Info")]
     [SerializeField] private ResultInfoBlock[] _resultArr;
     private Dictionary<ResultType, ResultInfoBlock> _resultDic = new();
+
+    private Sequence _backLabelSeq;
 
     private void Awake()
     {
@@ -54,8 +58,35 @@ public class GameResultUI : SceneUIContent
 
     public override void SceneUIStart()
     {
+        LabelModule backLabel = FindUIObject<LabelModule>("BackLabel");
 
+        backLabel.OnClickEvent += (v) =>
+        NetworkManager.Singleton.SceneManager.
+        LoadScene("LobbyScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
-        SetResultBlock(ResultType.Defeat);
+        backLabel.OnHoverEvent += HandleBackLabelHover;
+        backLabel.OnDesecendEvent += HandleBackLabelDescend;
+    }
+
+    private void HandleBackLabelDescend(UIObject obj)
+    {
+        LabelModule lm = obj as LabelModule;
+
+        _backLabelSeq?.Kill();
+        _backLabelSeq = DOTween.Sequence();
+
+        _backLabelSeq.Append(lm.Text.DOColor(new Color(0.6705883f, 0.6627451f, 0.5411765f), 0.1f));
+        _backLabelSeq.Join(lm.transform.DOScale(1f, 0.1f));
+    }
+
+    private void HandleBackLabelHover(UIObject obj)
+    {
+        LabelModule lm = obj as LabelModule;
+
+        _backLabelSeq?.Kill();
+        _backLabelSeq = DOTween.Sequence();
+
+        _backLabelSeq.Append(lm.Text.DOColor(Color.gray, 0.1f));
+        _backLabelSeq.Join(lm.transform.DOScale(1.1f, 0.1f));
     }
 }
