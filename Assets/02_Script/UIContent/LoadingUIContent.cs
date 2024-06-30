@@ -19,6 +19,9 @@ public class LoadingUIContent : SceneUIContent
 
     public override void SceneUIStart()
     {
+        if (_sceneAuido != null)
+            SoundManager.Instance.PlayBGM(_sceneAuido);
+
         _loadingLabel = FindUIObject<LabelModule>(UIManager.Instance.GetUIKewordMask(UIKeyword.Label, UIKeyword.Deco));
 
         _loadingTextArr.Shuffle();

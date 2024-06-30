@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000017033939, g: 0.000000025772884, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.000017033923, g: 0.000000025772884, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1034,6 +1034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  _fadingTime: 0
   _text: {fileID: 335346172}
   _animator: {fileID: 335346175}
 --- !u!114 &335346175
@@ -3512,8 +3513,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278222048
-  m_fontColor: {r: 0.8773585, g: 0.48512766, b: 0, a: 1}
+    rgba: 1358986464
+  m_fontColor: {r: 0.8773585, g: 0.48512766, b: 0, a: 0.31764707}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4472,6 +4473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _createRoomButton: {fileID: 335346174}
   _joinRoomButton: {fileID: 1612266805}
+  _joinCodeText: {fileID: 0}
   _roomNameInput: {fileID: 1053718774}
   _hostNameInput: {fileID: 121269972}
   _joinCodeInput: {fileID: 675809329}
@@ -6504,6 +6506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  _fadingTime: 0
   _text: {fileID: 1612266802}
   _animator: {fileID: 1612266804}
 --- !u!1001 &1626987666

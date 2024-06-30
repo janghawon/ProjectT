@@ -299,6 +299,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 4635427323847738840}
   _animator: {fileID: 6499319479651386761}
@@ -354,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiType: 4
+  _sceneAuido: {fileID: 8300000, guid: ebb3286cfc254404c8e381531cbd3f5e, type: 3}
   _resultArr:
   - type: 0
     resultMainText: Congratulation
@@ -456,6 +461,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 2
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
 --- !u!1 &6526440158449988478
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +738,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 8300000, guid: e18db393452964e469ba2cdfc7e249c9, type: 3}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 4133115088064073986}
   _animator: {fileID: 1648614306404911957}
@@ -1093,6 +1106,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 8119916879649979463}
   _animator: {fileID: 8324688079653191926}

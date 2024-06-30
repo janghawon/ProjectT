@@ -226,6 +226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 1114224593166976973}
   _animator: {fileID: 78067246774202307}
 --- !u!1 &8345058293402911130
@@ -455,6 +460,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
+  _fadingTime: 0
   _text: {fileID: 73139990147895194}
   _animator: {fileID: 6448185974269520498}
 --- !u!1 &8736073503933610952
@@ -549,6 +559,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 0
+  uiSFX:
+    clickSFX: {fileID: 8300000, guid: e18db393452964e469ba2cdfc7e249c9, type: 3}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _wavingFontValue: 200
   _wiggleFontValue: 150
   _tarotVisual: {fileID: 8560270411204324137}

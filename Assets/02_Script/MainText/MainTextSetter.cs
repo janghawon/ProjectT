@@ -12,6 +12,7 @@ public class MainTextSetter : MonoBehaviour
     [SerializeField] private LabelModule _subLabel;
     [SerializeField] private Image _line;
     [SerializeField] private Image _blackPanel;
+    [SerializeField] private CanvasGroup _canvasGroup;
 
     [Header("Setting")]
     [SerializeField] private Color _lineColor;
@@ -33,4 +34,9 @@ public class MainTextSetter : MonoBehaviour
         _blackPanel.DOColor(new Color(0, 0, 0, 0.8f), 0.2f);
     }
 
+    public void FadeText(float value, float time)
+    {
+        _canvasGroup.DOKill();
+        _canvasGroup.DOFade(value, time);
+    }
 }

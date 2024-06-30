@@ -7,6 +7,6 @@ public class FastWinding_TarotInfo : TarotCardInfo
 {
     public override void ApplyTarotEffect()
     {
-
+        TurnManager.Instance.SetTurnCount(3);
     }
 }

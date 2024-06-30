@@ -7,6 +7,6 @@ public class Smother_TarotInfo : TarotCardInfo
 {
     public override void ApplyTarotEffect()
     {
-
+        GamePlayManager.Instance.SetOpenItemServerRPC(false);
     }
 }

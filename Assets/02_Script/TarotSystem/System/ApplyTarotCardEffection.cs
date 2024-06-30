@@ -5,27 +5,26 @@ using UnityEngine;
 
 public class ApplyTarotCardEffection : MonoBehaviour
 {
-    [SerializeField] private TarotCardInfo[] _tarotInfoCantainer;
-    private Dictionary<TarotCardInfo, Action> _tarotCardActionDic = new ();
     public Action OnTarotEffection { get; set; }
 
-    private void Awake()
+    public void ApplyTarotEffection(int tarotID)
     {
-        foreach(var t in _tarotInfoCantainer)
-        {
-            _tarotCardActionDic.Add(t, t.ApplyTarotEffect);
-        }
+        TarotCardInfo info = TarotManager.Instance.GetTarotInfoByID(tarotID);
+        TurnManager.Instance.OnGoldTimeStart += info.ApplyTarotEffect;
+        TurnManager.Instance.OnGoldTimeStart += HandleStartDestinationUI;
     }
 
-    public void ApplyTarotEffection(TarotCardInfo info)
+    private void HandleStartDestinationUI()
     {
-        if(!_tarotCardActionDic.ContainsKey(info))
-        {
-            Debug.LogError($"Error : Not Foundation Tarot Info : {info}");
-            return;
-        }
+        StartCoroutine(LookContentCo());
+    }
 
-        _tarotCardActionDic[info].Invoke();
-        OnTarotEffection?.Invoke();
+    private IEnumerator LookContentCo()
+    {
+        InGameUIContent content = UIManager.Instance.GetSceneUIContent<InGameUIContent>();
+
+        content.EnableContent(InGameType.destination);
+        yield return new WaitForSeconds(3);
+        content.EnableContent(InGameType.none);
     }
 }
