@@ -1034,6 +1034,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 335346172}
   _animator: {fileID: 335346175}
@@ -6534,6 +6538,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  uiSFX:
+    clickSFX: {fileID: 0}
+    hoverSFX: {fileID: 0}
+    descendSFX: {fileID: 0}
   _fadingTime: 0
   _text: {fileID: 1612266802}
   _animator: {fileID: 1612266804}
@@ -7620,6 +7628,7 @@ GameObject:
   - component: {fileID: 1974040682}
   - component: {fileID: 1974040684}
   - component: {fileID: 1974040685}
+  - component: {fileID: 1974040686}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -7688,6 +7697,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tarotContainer:
   - {fileID: 11400000, guid: 2da866a8474bf8849af4816c61ff89d5, type: 2}
+  - {fileID: 11400000, guid: 2da866a8474bf8849af4816c61ff89d5, type: 2}
+  - {fileID: 11400000, guid: 2da866a8474bf8849af4816c61ff89d5, type: 2}
+--- !u!114 &1974040686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974040681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f636fdabe0856e468791cb3a1187fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2029396013
 GameObject:
   m_ObjectHideFlags: 0
