@@ -11,6 +11,7 @@ using UnityEngine;
 
 public abstract class TarotCardInfo : ScriptableObject
 {
+    public int id;
     public Sprite visual;
     public string cardName;
     [TextArea] public string info;

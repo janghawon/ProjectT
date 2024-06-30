@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UIFunction;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     private Table _table;
 
     public ulong EnemyClientId { get; private set; }
+    public bool IsUsingStore { get; private set; }
 
     public void StartGamePass()
     {
@@ -27,8 +29,15 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
         _table = FindObjectOfType<Table>();
         EnemyClientId = NetworkManager.ConnectedClientsIds.FirstOrDefault(x => x != NetworkManager.LocalClientId);
 
+        FindObjectOfType<ActivationStore>().RegisterCallback(HandleActivationStore);
+
         StartCoroutine(StartPass());
 
+    }
+
+    private void HandleActivationStore(UIObject @object)
+    {
+        throw new NotImplementedException();
     }
 
     private void Update()

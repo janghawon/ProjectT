@@ -8,6 +8,7 @@ public class Antidote : ItemInstance
     {
 
         PlayerDataManager.Instance.SetAlcohol(AlcoholState.Safe);
+        Destroy(gameObject);
 
     }
 

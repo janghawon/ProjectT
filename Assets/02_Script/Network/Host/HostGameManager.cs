@@ -22,9 +22,11 @@ public class HostGameManager : IDisposable
     private string _lobbyId;
 
     public NetworkServer NetServer { get; private set; }
+    public string JoinCode => _joinCode;
 
     public event Action<string, ulong> OnPlayerConnect;
     public event Action<string, ulong> OnPlayerDisconnect;
+    public event Action<string> OnRoomCreated;
 
     public async Task<bool> StartHostAsync(string lobbyName, UserData userData, bool roomState = false)
     {

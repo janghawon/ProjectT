@@ -5178,10 +5178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _backFacePrefab: {fileID: 5825895947261198511, guid: 4f426fa7ee23fa54589d5ada7c3d9b94, type: 3}
   _tarotCardPrefab: {fileID: 2666543118259453749, guid: 71d213fe38290da4aa089ac21a378676, type: 3}
-  _tarotCardInfoContainer:
-  - {fileID: 11400000, guid: fc8d435758535d84d8eb4c0011ae0257, type: 2}
-  - {fileID: 11400000, guid: fc8d435758535d84d8eb4c0011ae0257, type: 2}
-  - {fileID: 11400000, guid: fc8d435758535d84d8eb4c0011ae0257, type: 2}
   _tarotCardTrmPosArr:
   - {fileID: 7824017673423127059}
   - {fileID: 1558871983682347634}

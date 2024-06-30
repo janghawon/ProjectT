@@ -8,6 +8,7 @@ public class CrystalBall : ItemInstance
     {
 
         Debug.Log(PlayerDataManager.Instance.Data.state);
+        Destroy(gameObject);
 
     }
 

@@ -85,7 +85,6 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     private void StartTurnLogic()
     {
 
-        _turnPlayerId.Value = GetRandomPlayerId();
         StartCoroutine(TurnPassCo());
 
     }
@@ -128,6 +127,9 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
 
     private IEnumerator TurnPassCo()
     {
+
+        yield return null;
+        _turnPlayerId.Value = GetRandomPlayerId();
 
         while (true)
         {

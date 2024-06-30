@@ -42,7 +42,7 @@ public class ActivationStore : ExtensionMono
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Tab) && TurnManager.Instance.MyTurn)
         {
             _onStoreActivation?.Invoke(null);
         }
@@ -81,4 +81,12 @@ public class ActivationStore : ExtensionMono
 
         _storeExitEvent?.Invoke();
     }
+
+    public void RegisterCallback(Action<UIObject> callback)
+    {
+
+        _onStoreActivation += callback;
+
+    }
+
 }

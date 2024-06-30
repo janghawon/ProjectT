@@ -17,10 +17,15 @@ public class SelectItemPicker : MonoBehaviour
 
     public void SetInfo(StoreItemElement element, ItemInfo info)
     {
+
         if(_currentItemElement != null)
         {
             _currentItemElement.OutSelecting();
         }
+
+        //Debug
+        GamePlayManager.Instance?.BuyItem(info);
+        //Debug
 
         _currentItemElement = element;
 

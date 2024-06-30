@@ -32,4 +32,5 @@ public class MainTextSetter : MonoBehaviour
         _line.DOColor(_lineColor, 0.2f);
         _blackPanel.DOColor(new Color(0, 0, 0, 0.8f), 0.2f);
     }
+
 }

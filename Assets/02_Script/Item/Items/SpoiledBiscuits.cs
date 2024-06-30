@@ -14,6 +14,8 @@ public class SpoiledBiscuits : ItemInstance
 
         }
 
+        Destroy(gameObject);
+
     }
 
 }

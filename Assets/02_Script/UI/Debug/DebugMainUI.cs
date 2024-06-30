@@ -6,7 +6,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DebugLobbyUI : MonoBehaviour
+public class DebugMainUI : MonoBehaviour
 {
 
     [SerializeField] private TMP_InputField _input;
@@ -19,7 +19,7 @@ public class DebugLobbyUI : MonoBehaviour
         if (v)
         {
 
-            NetworkManager.Singleton.SceneManager.LoadScene("Game", LoadSceneMode.Additive);
+            NetworkManager.Singleton.SceneManager.LoadScene("Lobby", LoadSceneMode.Additive);
 
         }
 
