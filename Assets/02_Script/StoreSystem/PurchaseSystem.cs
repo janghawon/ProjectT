@@ -15,11 +15,12 @@ public class PurchaseSystem : ExtensionMono
 
     private void Start()
     {
-        AddSetupCallback(SetUpPurchaseBtn);
+        SetUpPurchaseBtn();
     }
 
     public void SetUpPurchaseBtn()
     {
+
         ButtonModule purchaseBtn = FindUIObject<ButtonModule>("PurchaseButton");
         _purchaseLabel = FindUIObject<LabelModule>("PurchaseLabel");
         _purchaseText = _purchaseLabel.TypedText;
@@ -44,6 +45,7 @@ public class PurchaseSystem : ExtensionMono
     private void HandleButtonClick(UIObject obj)
     {
 
+        Debug.Log(1);
         //юс╫ц
         GamePlayManager.Instance.BuyItem(_selectItemInfo);
 

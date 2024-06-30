@@ -96,6 +96,12 @@ public class TarotCardProduction : MonoBehaviour
         seq.AppendInterval(0.5f);
         seq.Append(transform.DOLocalMoveY(50, 0.2f));
         seq.Append(transform.DOLocalMoveY(-950, 0.4f).SetEase(Ease.OutQuart));
+        seq.AppendCallback(() =>
+        {
+
+            GamePlayManager.Instance.CheckSelectTarot();
+
+        });
     }
 
     private void StartUnSelectTarotProduc(Transform transform)

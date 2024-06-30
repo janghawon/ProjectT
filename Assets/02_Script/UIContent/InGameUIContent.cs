@@ -19,8 +19,8 @@ public class InGameUIContent : SceneUIContent
     [SerializeField] private UnityEvent _setUpEvent;
     [SerializeField] private GameObject[] _inGameContentArr;
     [SerializeField] private AudioClip _pageClip;
+    [SerializeField] private GameObject _currentContent;
 
-    private GameObject _currentContent;
     [SerializeField] private MainTextSetter _textSetter;
 
     public void EnableContent(InGameType type)

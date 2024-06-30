@@ -5427,21 +5427,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _unPanelTarotSelect:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1357465726827361980}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &5545360645638992090
 GameObject:
   m_ObjectHideFlags: 0
@@ -8618,7 +8603,8 @@ MonoBehaviour:
   - {fileID: 5545360645638992090}
   - {fileID: 4530410333182689073}
   _pageClip: {fileID: 8300000, guid: 536a0ff6111bb234d948b863b9f9f21d, type: 3}
-  _textSetter: {fileID: 0}
+  _currentContent: {fileID: 5383450150586986429}
+  _textSetter: {fileID: 7261518639616836501}
 --- !u!1 &7889810427140274683
 GameObject:
   m_ObjectHideFlags: 0

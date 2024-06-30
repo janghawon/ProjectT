@@ -45,7 +45,7 @@ public class AppController : MonoSingleton<AppController>
     private void OnInitComplete()
     {
 
-        SceneManager.LoadScene("Main_Save");
+        SceneManager.LoadScene("Intro");
 
     }
 
