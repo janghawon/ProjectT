@@ -5244,7 +5244,19 @@ MonoBehaviour:
         m_CallState: 2
   _tarotCardSelectionEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6449933608723850835}
+        m_TargetAssemblyTypeName: TarotCardProduction, Assembly-CSharp
+        m_MethodName: SelectTarotProduction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5545360645638992090
 GameObject:
   m_ObjectHideFlags: 0
@@ -8330,8 +8342,8 @@ RectTransform:
   m_Children:
   - {fileID: 8279509803243672978}
   - {fileID: 1632395051571122273}
-  - {fileID: 3169789246906369306}
   - {fileID: 539295522644792427}
+  - {fileID: 3169789246906369306}
   - {fileID: 8546793763003353046}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8356,6 +8368,11 @@ MonoBehaviour:
   _setUpEvent:
     m_PersistentCalls:
       m_Calls: []
+  _inGameContentArr:
+  - {fileID: 5383450150586986429}
+  - {fileID: 8000338472128667487}
+  - {fileID: 5545360645638992090}
+  - {fileID: 4530410333182689073}
 --- !u!1 &7889810427140274683
 GameObject:
   m_ObjectHideFlags: 0

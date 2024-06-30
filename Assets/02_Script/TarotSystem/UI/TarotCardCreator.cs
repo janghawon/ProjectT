@@ -2,6 +2,7 @@ using Extension;
 using System.Collections;
 using System.Collections.Generic;
 using UIFunction;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -26,7 +27,7 @@ public class TarotCardCreator : MonoBehaviour
     [SerializeField] private UnityEvent<Transform> _backFaceDisAppearEvent;
     [SerializeField] private UnityEvent<Transform> _tarotCardAppearEvent;
     [SerializeField] private UnityEvent<TarotCard[]> _tarotCardProductionEvent;
-    [SerializeField] private UnityEvent<TarotCard> _tarotCardSelectionEvent;
+    [SerializeField] private UnityEvent<TarotCard, TarotCard[]> _tarotCardSelectionEvent;
 
     private void Start()
     {
@@ -71,10 +72,19 @@ public class TarotCardCreator : MonoBehaviour
             tarot.OnHoverEvent += tarot.EmphasizeLabelText;
             tarot.OnDesecendEvent += tarot.NormaingLabelText;
 
-            tarot.OnClickEvent += (UIObject obj) => _tarotCardSelectionEvent?.Invoke(tarot);
+            //tarot.OnClickEvent += (UIObject obj) =>
+            //PlayerDataManager.Instance.SetTarotCard
+            //(NetworkManager.Singleton.LocalClientId, tarot.Info.id);
 
+            tarot.OnClickEvent += tarot.OnClickEvent += (u) => tarot.CanSelect = true;
 
             tarotCards[i] = tarot;
+        }
+
+        foreach(var tarotCard in tarotCards)
+        {
+            tarotCard.OnClickEvent += (UIObject obj) => 
+            _tarotCardSelectionEvent?.Invoke(tarotCard, tarotCards);
         }
 
         yield return new WaitForSeconds(0.32f);

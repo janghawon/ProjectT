@@ -13,6 +13,8 @@ public class TarotManager : MonoSingleton<TarotManager>
     {
         foreach (var tarot in _tarotContainer)
         {
+            if (_tarotCardDic.ContainsKey(tarot.id)) continue;
+
             _tarotCardDic.Add(tarot.id, tarot);
         }
     }

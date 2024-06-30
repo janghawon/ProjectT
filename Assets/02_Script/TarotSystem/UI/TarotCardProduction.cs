@@ -68,6 +68,39 @@ public class TarotCardProduction : MonoBehaviour
         _canProduction = true;
     }
 
+    public void SelectTarotProduction(TarotCard target, TarotCard[] tarotArr)
+    {
+        _canProduction = false;
+
+        foreach (var tar in tarotArr)
+        {
+            tar.CanSelect = false;
+            tar.SetLabelText(string.Empty, string.Empty);
+
+            if(tar == target)
+            {
+                StartSelectTarotProduc(target.transform);
+                continue;
+            }
+            StartUnSelectTarotProduc(tar.transform);
+        }
+    }
+
+    private void StartSelectTarotProduc(Transform transform)
+    {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(transform.DOScale(1.3f, 0.2f));
+        seq.Join(transform.DOLocalRotateQuaternion(Quaternion.identity, 0.1f));
+        seq.AppendInterval(0.5f);
+        seq.Append(transform.DOLocalMoveY(50, 0.2f));
+        seq.Append(transform.DOLocalMoveY(-950, 0.4f).SetEase(Ease.OutQuart));
+    }
+
+    private void StartUnSelectTarotProduc(Transform transform)
+    {
+        transform.DOLocalMoveY(-900, 0.4f).SetEase(Ease.OutBack);
+    }
+
     private void TarotDescendAction(UIObject obj)
     {
         TarotCard tc = obj as TarotCard;

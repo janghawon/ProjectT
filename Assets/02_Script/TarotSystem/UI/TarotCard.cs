@@ -31,9 +31,14 @@ public class TarotCard : UIObject
     private string _saveNameText;
     private string _saveInfoText;
 
+    public TarotCardInfo Info { get; private set; }
+
+    public bool CanSelect { get; set; } = true;
+
     public void SetInfo(TarotCardInfo info)
     {
         _tarotVisual.sprite = info.visual;
+        Info = info;
     }
 
     public void SetLabelText(string info, string cardname)
@@ -67,6 +72,8 @@ public class TarotCard : UIObject
 
     public override void OnPointerClick(PointerEventData eventData)
     {
+        if (!CanSelect) return;
+
         base.OnPointerClick(eventData);
     }
     public override void OnPointerEnter(PointerEventData eventData)
