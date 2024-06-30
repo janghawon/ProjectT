@@ -8,6 +8,19 @@ public class Alcohol : ItemInstance
 
         var state = PlayerDataManager.Instance.Data.state;
 
+        if (state == AlcoholState.Safe)
+        {
+
+            FeedbackManager.Instance.PlayFeedback("Yammy");
+
+        }
+        else
+        {
+
+            FeedbackManager.Instance.PlayFeedback("Aya");
+
+        }
+
         PlayerDataManager.Instance.AddHealth(-(int)state);
 
         PlayerDataManager.Instance.SetAlcohol(RandomAlcohol());

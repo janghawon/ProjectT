@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000017033939, g: 0.000000025772884, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.000017033932, g: 0.000000025772884, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1034,6 +1034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  _fadingTime: 0
   _text: {fileID: 335346172}
   _animator: {fileID: 335346175}
 --- !u!114 &335346175
@@ -4451,6 +4452,7 @@ GameObject:
   - component: {fileID: 1126423113}
   - component: {fileID: 1126423112}
   - component: {fileID: 1126423114}
+  - component: {fileID: 1126423115}
   m_Layer: 0
   m_Name: RoomConnectSystemUI
   m_TagString: Untagged
@@ -4472,6 +4474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _createRoomButton: {fileID: 335346174}
   _joinRoomButton: {fileID: 1612266805}
+  _joinCodeText: {fileID: 829670554}
   _roomNameInput: {fileID: 1053718774}
   _hostNameInput: {fileID: 121269972}
   _joinCodeInput: {fileID: 675809329}
@@ -4533,6 +4536,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a9f1c2f655a5546970e250f9f5b0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1126423115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126423111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73765eb39244ac49819d0e018e4e074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onRoomCreated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1126423112}
+        m_TargetAssemblyTypeName: RoomManagementUI, Assembly-CSharp
+        m_MethodName: HandleSetJoinCode
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1130202149
 GameObject:
   m_ObjectHideFlags: 0
@@ -6504,6 +6534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myKeword: 64
+  _fadingTime: 0
   _text: {fileID: 1612266802}
   _animator: {fileID: 1612266804}
 --- !u!1001 &1626987666
@@ -7588,6 +7619,7 @@ GameObject:
   - component: {fileID: 1974040683}
   - component: {fileID: 1974040682}
   - component: {fileID: 1974040684}
+  - component: {fileID: 1974040685}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -7642,6 +7674,20 @@ MonoBehaviour:
   _poolInfoGroup:
     poolParent: {fileID: 0}
     poolListGroup: []
+--- !u!114 &1974040685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974040681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5727e50742293ac4ca9b1f5fdeaf0d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tarotContainer:
+  - {fileID: 11400000, guid: 2da866a8474bf8849af4816c61ff89d5, type: 2}
 --- !u!1 &2029396013
 GameObject:
   m_ObjectHideFlags: 0

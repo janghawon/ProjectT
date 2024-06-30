@@ -82,6 +82,7 @@ public class HostGameManager : IDisposable
             NetworkManager.Singleton.StartHost();
 
             Debug.Log(_joinCode);
+            OnRoomCreated?.Invoke(_joinCode);
 
             return true;
 

@@ -8,6 +8,20 @@ public class CrystalBall : ItemInstance
     {
 
         Debug.Log(PlayerDataManager.Instance.Data.state);
+
+        if(PlayerDataManager.Instance.Data.state == AlcoholState.Safe)
+        {
+
+            FeedbackManager.Instance.PlayFeedback("Yammy");
+
+        }
+        else
+        {
+
+            FeedbackManager.Instance.PlayFeedback("Aya");
+
+        }
+
         Destroy(gameObject);
 
     }

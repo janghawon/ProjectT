@@ -13,7 +13,15 @@ public class SpoiledBiscuits : ItemInstance
             if (Random.value > 0.5f)
             {
 
+                FeedbackManager.Instance.PlayFeedback("Yammy");
                 PlayerDataManager.Instance.AddHealth(1);
+
+            }
+            else
+            {
+
+
+                FeedbackManager.Instance.PlayFeedback("Aya");
 
             }
 
