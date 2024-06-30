@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
+using UIFunction;
 
 public class ResultScene : MonoBehaviour
 {
@@ -11,8 +13,20 @@ public class ResultScene : MonoBehaviour
         yield return null;
 
         GameManager.Instance.UnLoadScene("Game");
-        Debug.Log(PlayerPrefs.GetInt("DIE_PLAYER", -1));
+        UIManager.Instance.ChangeSceneUIOnChangeScene(SceneType.Result);
 
+        yield return null;
+
+        GameResultUI ui = UIManager.Instance.GetSceneUIContent<GameResultUI>();
+
+        if (PlayerPrefs.GetInt("DIE_PLAYER", -1) == (int)NetworkManager.Singleton.LocalClientId)
+        {
+            ui.SetResultBlock(ResultType.Defeat);
+        }
+        else
+        {
+            ui.SetResultBlock(ResultType.Win);
+        }
     }
 
 }
