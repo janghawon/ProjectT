@@ -7,6 +7,8 @@ using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine.Events;
+using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class GameControllSystem : ExtensionMono
 {
@@ -33,6 +35,7 @@ public class GameControllSystem : ExtensionMono
 
         lable.OnHoverEvent += HandleTextHover;
         lable.OnDesecendEvent += HandleTextDescend;
+        lable.OnClickEvent += (d) => Application.Quit();
     }
 
     private void HandleTextDescend(UIObject obj)
@@ -57,6 +60,6 @@ public class GameControllSystem : ExtensionMono
 
     private void HandleGameStart(UIObject obj)
     {
-        
+        NetworkManager.Singleton.SceneManager.LoadScene("LobbyScene", LoadSceneMode.Additive);
     }
 }

@@ -21,6 +21,7 @@ public struct PlayerData : INetworkSerializable, IEquatable<PlayerData>
     public AlcoholState state;
     public ulong clientId;
     public int extraTurnTime;
+    public int selectTarotID;
 
     public bool Equals(PlayerData other)
     {
@@ -46,6 +47,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
 {
 
     [SerializeField] private int _maxHealth = 3;
+    public int MaxHealth => _maxHealth;
     [SerializeField] private int _startGold = 20;
 
     private NetworkList<PlayerData> _playerDatas = new NetworkList<PlayerData>();
@@ -90,6 +92,22 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
 
     }
 
+    public void SetTarotCard(ulong clientID, int tarotID)
+    {
+        SetTatotCardServerRpc(clientID, tarotID);
+    }
+
+    [ServerRpc]
+    private void SetTatotCardServerRpc(ulong clientID, int tarotID)
+    {
+        var data = this[clientID];
+        var idx = FindIndex(data);
+
+        data.selectTarotID = tarotID;
+
+        _playerDatas[idx] = data;
+    }
+
     public void AddGold(ulong targetClientId, int gold)
     {
 
@@ -100,6 +118,31 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
 
         _playerDatas[idx] = data;
 
+    }
+
+    public int GetHealth(ulong targetClientId)
+    {
+        var data = this[targetClientId];
+        var idx = FindIndex(data);
+
+        return _playerDatas[idx].health;
+    }
+
+    public void SetHealth(ulong targetClientId, int health)
+    {
+        SetHealthServerRpc(targetClientId, health);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SetHealthServerRpc(ulong targetClientId, int health)
+    {
+        var data = this[targetClientId];
+        var idx = FindIndex(data);
+
+        data.health = health;
+        data.health = Mathf.Clamp(data.health, 0, _maxHealth);
+
+        _playerDatas[idx] = data;
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -126,7 +169,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
         data.health += health;
         data.health = Mathf.Clamp(data.health, 0, _maxHealth);
 
-        Debug.Log($"Ã¤·Â ¹Ù²ñ : id / {targetClientId} , health / {data.health}");
+        Debug.Log($"Ã¤ï¿½ï¿½ ï¿½Ù²ï¿½ : id / {targetClientId} , health / {data.health}");
 
         if(data.health == 0)
         {
@@ -248,6 +291,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
             gold = _startGold,
             state = (AlcoholState)Random.Range(0, 2),
             clientId = clientId,
+            selectTarotID = 0
 
         };
 
@@ -263,7 +307,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
     }
 
     /// <summary>
-    /// µ¥ÀÌÅÍ ¹Ù²ñ
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
     /// </summary>
     /// <param name="changeData"></param>
     public delegate void PlayerDataChange(PlayerData changeData);

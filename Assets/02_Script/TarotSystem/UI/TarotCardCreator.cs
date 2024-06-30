@@ -18,9 +18,7 @@ public class TarotCardCreator : MonoBehaviour
     [Header("Setting")]
     [SerializeField] private Transform _backFacePrefab;
     [SerializeField] private TarotCard _tarotCardPrefab;
-    [SerializeField] private TarotCardInfo[] _tarotCardInfoContainer;
     [SerializeField] private Transform[] _tarotCardTrmPosArr;
-
     private readonly int _canSelectTarotCardCount = 3;
 
     [Header("Events")]
@@ -40,7 +38,9 @@ public class TarotCardCreator : MonoBehaviour
         Transform[] backFaceTrms = new Transform[_canSelectTarotCardCount];
         TarotCard[] tarotCards = new TarotCard[_canSelectTarotCardCount];
 
-        _tarotCardInfoContainer.Shuffle();
+        TarotCardInfo[] tarotInfoArr = TarotManager.Instance.TarotContainer;
+
+        tarotInfoArr.Shuffle();
 
         for(int i = 0; i < _canSelectTarotCardCount; i++)
         {
@@ -62,15 +62,17 @@ public class TarotCardCreator : MonoBehaviour
 
             TarotCard tarot = Instantiate(_tarotCardPrefab, transform);
             tarot.transform.localPosition = _tarotCardTrmPosArr[i].localPosition;
-            tarot.SetInfo(_tarotCardInfoContainer[i]);
+            tarot.SetInfo(tarotInfoArr[i]);
             _tarotCardAppearEvent?.Invoke(tarot.VisualTrm);
 
-            TarotCardInfo info = _tarotCardInfoContainer[i];
+            TarotCardInfo info = tarotInfoArr[i];
             tarot.SetLabelText(info.info, info.cardName);
 
             tarot.OnHoverEvent += tarot.EmphasizeLabelText;
             tarot.OnDesecendEvent += tarot.NormaingLabelText;
+
             tarot.OnClickEvent += (UIObject obj) => _tarotCardSelectionEvent?.Invoke(tarot);
+
 
             tarotCards[i] = tarot;
         }
