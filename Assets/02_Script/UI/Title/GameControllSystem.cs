@@ -60,6 +60,6 @@ public class GameControllSystem : ExtensionMono
 
     private void HandleGameStart(UIObject obj)
     {
-        NetworkManager.Singleton.SceneManager.LoadScene("LobbyScene", LoadSceneMode.Additive);
+        NetworkManager.Singleton.SceneManager.LoadScene("Main_Save", LoadSceneMode.Additive);
     }
 }
