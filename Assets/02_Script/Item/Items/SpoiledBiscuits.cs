@@ -23,4 +23,13 @@ public class SpoiledBiscuits : ItemInstance
 
     }
 
+    protected override void UseLinkItem()
+    {
+        AnimationManager.Instance.PlayTargetEatAnimation(transform, () =>
+        {
+
+            Destroy(gameObject);
+
+        });
+    }
 }

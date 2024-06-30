@@ -15,6 +15,13 @@ public class Alcohol : ItemInstance
 
     }
 
+    protected override void UseLinkItem()
+    {
+
+
+
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private AlcoholState RandomAlcohol()
     {

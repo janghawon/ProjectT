@@ -25,7 +25,7 @@ public class TurnDebug : MonoBehaviour
     private void HandleTimeChanged(int oldTime, int newTime)
     {
 
-        //Debug.Log($"Ω√∞£ »Â∏ß : {newTime}");
+        Debug.Log($"Ω√∞£ »Â∏ß : {newTime}");
 
     }
 

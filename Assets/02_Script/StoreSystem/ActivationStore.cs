@@ -42,6 +42,9 @@ public class ActivationStore : ExtensionMono
 
     private void Update()
     {
+
+        if (TurnManager.Instance.IsGoldTime) return;
+
         if(Input.GetKeyDown(KeyCode.Tab) && TurnManager.Instance.MyTurn)
         {
             _onStoreActivation?.Invoke(null);

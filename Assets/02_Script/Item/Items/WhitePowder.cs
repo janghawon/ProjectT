@@ -20,4 +20,10 @@ public class WhitePowder : ItemInstance
 
     }
 
+    protected override void UseLinkItem()
+    {
+
+        AnimationManager.Instance.PlayTargetInputAnimation(transform, () => Destroy(gameObject), false);
+
+    }
 }

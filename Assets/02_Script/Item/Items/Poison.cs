@@ -12,4 +12,11 @@ public class Poison : ItemInstance
 
     }
 
+    protected override void UseLinkItem()
+    {
+
+        AnimationManager.Instance.PlayTargetInputAnimation(transform, () => Destroy(gameObject), false);
+
+    }
+
 }

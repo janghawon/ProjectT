@@ -9,6 +9,9 @@ public class AnimationManager : MonoSingleton<AnimationManager>
 
     [SerializeField] private Transform _inputTrm, _enemyInputTrm;
     [SerializeField] private Transform _eatPos;
+    [Header("_Enemy_")]
+    [SerializeField] private Transform _targetInputTrm, _targetEnemyInputTrm;
+    [SerializeField] private Transform _targetEatPos;
 
     /// <summary>
     /// 술에 뭐 넣는 애니메이션
@@ -36,6 +39,37 @@ public class AnimationManager : MonoSingleton<AnimationManager>
         Sequence seq = DOTween.Sequence();
 
         seq.Append(obj.DOMove(_eatPos.position, 0.3f));
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(() => endCallback?.Invoke());
+
+    }
+
+    /// <summary>
+    /// 술에 뭐 넣는 애니메이션
+    /// </summary>
+    public void PlayTargetInputAnimation(Transform obj, Action endCallback, bool local)
+    {
+
+        Sequence seq = DOTween.Sequence();
+
+        var pos = local ? _targetInputTrm : _targetEnemyInputTrm;
+
+        seq.Append(obj.DOMove(pos.position, 0.3f));
+        seq.Append(obj.DORotate(new Vector3(0, 0, 110), 0.3f));
+        seq.AppendInterval(0.5f);
+        seq.AppendCallback(() => endCallback?.Invoke());
+
+    }
+
+    /// <summary>
+    /// 먹는 애니메이션
+    /// </summary>
+    public void PlayTargetEatAnimation(Transform obj, Action endCallback)
+    {
+
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(obj.DOMove(_targetEatPos.position, 0.3f));
         seq.AppendInterval(0.5f);
         seq.AppendCallback(() => endCallback?.Invoke());
 

@@ -1,7 +1,9 @@
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class DrinkMoveData
@@ -28,6 +30,7 @@ public class Table : MonoBehaviour
     [SerializeField] private GameObject _alcoholPrefab;
     [SerializeField] private List<Transform> _itemSpawnTrms;
     [SerializeField] private List<DrinkMoveData> _drinkMoveDatas;
+    [SerializeField] private bool _isEnemy;
 
     private List<Transform> _ableTrms = new();
 
@@ -35,6 +38,9 @@ public class Table : MonoBehaviour
     {
 
         _ableTrms = _itemSpawnTrms.ToList();
+
+        if (_isEnemy) return;
+
         TurnManager.Instance.OnTurnChanged += HandleTurnChanged;
 
     }
@@ -67,14 +73,17 @@ public class Table : MonoBehaviour
 
     }
 
-    public bool SpawnItem(GameObject prefab)
+    public bool SpawnItem(GameObject prefab, Guid guid, out ItemInstance ins)
     {
 
+        ins = null;
         if (_ableTrms.Count <= 0) return false;
 
         var trm = _ableTrms[Random.Range(0, _ableTrms.Count)];
         var obj = Instantiate(prefab, trm.position, Quaternion.identity).GetComponent<ItemInstance>();
 
+        ins = obj;
+        obj.SetGuid(guid);
         obj.OnItemUsed += HandleItemUsed;
 
         _ableTrms.Remove(trm);

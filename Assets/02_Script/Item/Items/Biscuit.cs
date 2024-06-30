@@ -18,4 +18,17 @@ public class Biscuit : ItemInstance
 
     }
 
+    protected override void UseLinkItem()
+    {
+
+        AnimationManager.Instance.PlayTargetEatAnimation(transform, () =>
+        {
+
+            Destroy(gameObject);
+
+        });
+
+
+    }
+
 }

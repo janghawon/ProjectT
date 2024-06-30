@@ -12,4 +12,8 @@ public class Antidote : ItemInstance
 
     }
 
+    protected override void UseLinkItem()
+    {
+        AnimationManager.Instance.PlayTargetInputAnimation(transform, () => Destroy(gameObject), true);
+    }
 }

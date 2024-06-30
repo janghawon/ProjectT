@@ -42,14 +42,22 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
             NetworkVariableWritePermission.Server);
 
     private List<ulong> _connectClientIds = new();
+    private int _turnCount;
 
     public int CurrentTurnTime => _currentTurnTime.Value;
     public ulong TurnPlayerId => _turnPlayerId.Value;
 
     public bool MyTurn => TurnPlayerId == NetworkManager.LocalClientId;
+    private NetworkVariable<bool> _isGoldTime = new NetworkVariable<bool>(
+            false,
+            NetworkVariableReadPermission.Everyone,
+            NetworkVariableWritePermission.Server);
+
+    public bool IsGoldTime => _isGoldTime.Value;
 
     public event TurnChange OnTurnChanged;
     public event TimeChange OnTimeChanged;
+    public event Action OnGoldTimeStart;
 
     private void HandleTimeValueChanged(int previousValue, int newValue)
     {
@@ -101,6 +109,17 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     private void ChangeTurn()
     {
 
+        if(_turnCount == 6 && !IsGoldTime)
+        {
+
+            _isGoldTime.Value = true;
+            _turnCount = 0;
+            Debug.Log("°ñµå Å¸ÀÓ");
+            OnGoldTimeStart?.Invoke();
+
+        }
+
+        _turnCount++;
         _turnPlayerId.Value = _connectClientIds.Find(x => x != _turnPlayerId.Value);
 
     }
@@ -147,7 +166,17 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
             {
 
                 var data = PlayerDataManager.Instance[_turnPlayerId.Value];
+                data.extraTurnTime = 30;
+                PlayerDataManager.Instance.SetData(data);
                 PlayerDataManager.Instance.AddHealth(_turnPlayerId.Value, -(int)data.state);
+
+            }
+            else
+            {
+
+                var data = PlayerDataManager.Instance[_turnPlayerId.Value];
+                data.extraTurnTime = 0;
+                PlayerDataManager.Instance.SetData(data);
 
             }
 
@@ -162,7 +191,16 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
 
         var wait = new WaitForSecondsRealtime(1);
 
-        var apply = _currentTurnTime.Value = _applyTurnTime;
+        int v = IsGoldTime ? 10 * _turnCount : PlayerDataManager.Instance[_turnPlayerId.Value].extraTurnTime;
+        var apply = _currentTurnTime.Value = _applyTurnTime - v;
+
+        if(apply <= 0)
+        {
+
+            GamePlayManager.Instance.CheckEndGame();
+            yield break;
+
+        }
 
         for (int i = 0; i < apply; i++)
         {
@@ -172,6 +210,13 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
 
         }
         endCallback?.Invoke();
+
+    }
+
+    public void SetTurnCount(int count)
+    {
+
+        _turnCount = count;
 
     }
 

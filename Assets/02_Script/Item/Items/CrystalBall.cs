@@ -12,4 +12,10 @@ public class CrystalBall : ItemInstance
 
     }
 
+    protected override void UseLinkItem()
+    {
+
+        Destroy(gameObject);
+
+    }
 }

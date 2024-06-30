@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UIFunction;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +12,11 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 {
 
     [SerializeField] private ItemInfo _debugItem;
-    private Table _table;
+    [SerializeField] private List<ItemInfo> _items;
+    [SerializeField] private Table _enemyTable;
+    [SerializeField] private Table _table;
+
+    private List<ItemInstance> _enemyInstanceList = new();
 
     public ulong EnemyClientId { get; private set; }
     public bool IsUsingStore { get; private set; }
@@ -27,10 +32,54 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     private void StartPassClientRPC()
     {
 
-        _table = FindObjectOfType<Table>();
         EnemyClientId = NetworkManager.ConnectedClientsIds.FirstOrDefault(x => x != NetworkManager.LocalClientId);
 
         StartCoroutine(StartPass());
+
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SpawnLinkItemServerRPC(FixedString128Bytes name, FixedString128Bytes guid, ulong targetClientRPC)
+    {
+
+        SpawnLinkItemClientRPC(name, guid, targetClientRPC.GetRpcParams());
+
+    }
+
+    [ClientRpc]
+    private void SpawnLinkItemClientRPC(FixedString128Bytes name, FixedString128Bytes guid, ClientRpcParams @params)
+    {
+
+        var obj = _items.Find(x => x.itemName == name.ToString());
+        _enemyTable.SpawnItem(obj.prefab, Guid.Parse(guid.ToString()), out var ins);
+        _enemyInstanceList.Add(ins);
+
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void LinkUseItemServerRPC(FixedString128Bytes guid, ulong tergetClientId)
+    {
+
+        LinkUseItemClientRPC(guid, tergetClientId.GetRpcParams());
+
+    }
+
+    [ClientRpc]
+    private void LinkUseItemClientRPC(FixedString128Bytes guid, ClientRpcParams @params)
+    {
+
+        var obj = _enemyInstanceList.Find(x => x.GUID == Guid.Parse(guid.ToString()));
+
+        Debug.Log(obj);
+
+        if(obj != null)
+        {
+
+            _enemyInstanceList.Remove(obj);
+            obj.UseLink();
+
+        }
+
 
     }
 
@@ -71,12 +120,29 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
     public void BuyItem(ItemInfo info)
     {
 
-        if (_table.SpawnItem(info.prefab))
+        if (SpawnItem(info))
         {
 
             PlayerDataManager.Instance.AddGold(-info.price);
 
         }
+
+    }
+
+    public bool SpawnItem(ItemInfo info)
+    {
+
+        var id = Guid.NewGuid();
+        bool b = _table.SpawnItem(info.prefab, id, out var _);
+
+        if (b)
+        {
+
+            SpawnLinkItemServerRPC(info.itemName, id.ToString(), EnemyClientId);
+
+        }
+
+        return b;
 
     }
 
@@ -100,6 +166,13 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
 
         PlayerPrefs.SetInt("DIE_PLAYER", (int)diePlayerId);
         GameManager.Instance.LoadScene("Result");
+
+    }
+
+    public void CheckEndGame()
+    {
+
+        Debug.Log("³¡");
 
     }
 

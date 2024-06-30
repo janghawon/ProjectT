@@ -20,6 +20,7 @@ public struct PlayerData : INetworkSerializable, IEquatable<PlayerData>
     public int gold;
     public AlcoholState state;
     public ulong clientId;
+    public int extraTurnTime;
 
     public bool Equals(PlayerData other)
     {
@@ -35,6 +36,7 @@ public struct PlayerData : INetworkSerializable, IEquatable<PlayerData>
         serializer.SerializeValue(ref gold);
         serializer.SerializeValue(ref state);
         serializer.SerializeValue(ref clientId);
+        serializer.SerializeValue(ref extraTurnTime);
 
     }
 
@@ -248,6 +250,15 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>, INetwo
             clientId = clientId,
 
         };
+
+    }
+
+    public void SetData(PlayerData data)
+    {
+
+        var idx = FindIndex(data);
+
+        _playerDatas[idx] = data;
 
     }
 
