@@ -14,6 +14,5 @@ public abstract class TarotCardInfo : ScriptableObject
     public Sprite visual;
     public string cardName;
     [TextArea] public string info;
-    public int tarotID;
     public abstract void ApplyTarotEffect();
 }

@@ -19,10 +19,9 @@ public class TarotCardProduction : MonoBehaviour
     [SerializeField] private float _lerpValue;
 
     [Header("Printing Value")]
+    private bool _canProduction = false;
     private TarotCard[] _toProductionTarotArr;
     private int[] _randValueArr;
-
-    [field:SerializeField] public bool CanProduction { get; set; } = false;
 
     public void AppearBackFace(Transform backFaceTrm)
     {
@@ -66,7 +65,7 @@ public class TarotCardProduction : MonoBehaviour
             _randValueArr[i] = Random.Range(-3, 3);
         }
 
-        CanProduction = true;
+        _canProduction = true;
     }
 
     private void TarotDescendAction(UIObject obj)
@@ -86,7 +85,7 @@ public class TarotCardProduction : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!CanProduction) return;
+        if (!_canProduction) return;
 
         for(int i = 0; i < _toProductionTarotArr.Length; i++)
         {

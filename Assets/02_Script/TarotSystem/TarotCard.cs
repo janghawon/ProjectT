@@ -19,8 +19,6 @@ public class TarotCard : UIObject
     private bool _onPointerThisCard;
     public bool OnPointerThisCard => _onPointerThisCard;
 
-    public bool OnSelectThisCard { get; set; }
-
     [SerializeField] private int _wavingFontValue = 200;
     [SerializeField] private int _wiggleFontValue = 150;
 
@@ -33,12 +31,9 @@ public class TarotCard : UIObject
     private string _saveNameText;
     private string _saveInfoText;
 
-    public TarotCardInfo Info { get; private set; }
-
     public void SetInfo(TarotCardInfo info)
     {
         _tarotVisual.sprite = info.visual;
-        Info = info;
     }
 
     public void SetLabelText(string info, string cardname)
@@ -72,10 +67,6 @@ public class TarotCard : UIObject
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        if (OnSelectThisCard) return;
-
-        OnSelectThisCard = true;
-
         base.OnPointerClick(eventData);
     }
     public override void OnPointerEnter(PointerEventData eventData)
