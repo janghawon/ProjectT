@@ -35,7 +35,7 @@ public class ApplyTarotCardEffection : MonoBehaviour
 
         content.EnableContent(InGameType.destination);
         FindObjectOfType<DestinationTarotSetter>().SetTarotInfo(_cards[0], _cards[1]);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         content.EnableContent(InGameType.none);
     }
 }

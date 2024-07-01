@@ -10,11 +10,6 @@ public class DestinationTarotSetter : MonoBehaviour
 
     [SerializeField] private UnityEvent<TarotCard[]> _tarotProductionStartEvent;
 
-    private void Start()
-    {
-        //SetTarotInfo();
-    }
-
     public void SetTarotInfo(TarotCardInfo hostInfo, TarotCardInfo clientInfo)
     {
         _hostTarotCard.SetInfo(hostInfo);
