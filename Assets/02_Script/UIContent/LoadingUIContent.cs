@@ -27,6 +27,12 @@ public class LoadingUIContent : SceneUIContent
         _loadingTextArr.Shuffle();
     }
 
+    public void SetJoinCodeLabel(string joincode)
+    {
+        LabelModule joinLabel = FindUIObject<LabelModule>("JoinCodeLabel");
+        joinLabel.Text.text = joincode;
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))

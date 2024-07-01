@@ -38,6 +38,7 @@ public struct PlayerData : INetworkSerializable, IEquatable<PlayerData>
         serializer.SerializeValue(ref state);
         serializer.SerializeValue(ref clientId);
         serializer.SerializeValue(ref extraTurnTime);
+        serializer.SerializeValue(ref selectTarotID);
 
     }
 
@@ -171,7 +172,7 @@ public class PlayerDataManager : NetworkMonoSingleton<PlayerDataManager>
 
         Debug.Log($"ä�� �ٲ� : id / {targetClientId} , health / {data.health}");
 
-        if(data.health == 0)
+        if(data.health <= 0)
         {
 
             GamePlayManager.Instance.PlayerDie(data.clientId);

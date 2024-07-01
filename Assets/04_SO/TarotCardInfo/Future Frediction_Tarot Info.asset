@@ -16,4 +16,4 @@ MonoBehaviour:
   visual: {fileID: 0}
   cardName: 
   info: 
-  _toGetitem: {fileID: 0}
+  _toGetitem: {fileID: 11400000, guid: 0ab2bf37730d8c44f820c7a106d668b7, type: 2}

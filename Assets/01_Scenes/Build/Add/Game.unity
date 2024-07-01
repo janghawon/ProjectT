@@ -1066,6 +1066,10 @@ PrefabInstance:
       value: 0.67058825
       objectReference: {fileID: 0}
     - target: {fileID: 7571007442806958823, guid: 9774f9956670a0645ab9c65276c9f0f7, type: 3}
+      propertyPath: _isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571007442806958823, guid: 9774f9956670a0645ab9c65276c9f0f7, type: 3}
       propertyPath: _drinkMoveDatas.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -4293,9 +4297,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3471062511377573631, guid: 420cfa967b3b63e4f957db12d89733d2, type: 3}
+      propertyPath: Channel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042673371633047478, guid: 420cfa967b3b63e4f957db12d89733d2, type: 3}
+      propertyPath: Channel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6490389967636374423, guid: 420cfa967b3b63e4f957db12d89733d2, type: 3}
       propertyPath: m_Name
       value: YammyFeedback
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424835389918390071, guid: 420cfa967b3b63e4f957db12d89733d2, type: 3}
+      propertyPath: managedReferences[9210330320051372032].Channel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424835389918390071, guid: 420cfa967b3b63e4f957db12d89733d2, type: 3}
+      propertyPath: managedReferences[9210330320051372036].Channel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5087,6 +5107,10 @@ PrefabInstance:
       value: 0.67058825
       objectReference: {fileID: 0}
     - target: {fileID: 7571007442806958823, guid: 9774f9956670a0645ab9c65276c9f0f7, type: 3}
+      propertyPath: _isEnemy
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7571007442806958823, guid: 9774f9956670a0645ab9c65276c9f0f7, type: 3}
       propertyPath: _drinkMoveDatas.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -5206,7 +5230,9 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.494
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 530514010949007502, guid: 9774f9956670a0645ab9c65276c9f0f7, type: 3}
+    - {fileID: 815471109361661329, guid: 9774f9956670a0645ab9c65276c9f0f7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1428324598344469814, guid: 9774f9956670a0645ab9c65276c9f0f7, type: 3}

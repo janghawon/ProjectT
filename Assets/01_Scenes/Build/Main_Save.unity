@@ -7630,6 +7630,7 @@ GameObject:
   - component: {fileID: 1974040685}
   - component: {fileID: 1974040686}
   - component: {fileID: 1974040687}
+  - component: {fileID: 1974040688}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -7650,9 +7651,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasTrm: {fileID: 1576174374}
-  _startSceneType: 1
+  _startSceneType: 3
   _screenElementGroup:
   - {fileID: 6995810397505534371, guid: 6a17fb62c6965d14c844cdb7fc02b274, type: 3}
+  - {fileID: 4778570188530681593, guid: 62098721a8420af45943d6d0750f721d, type: 3}
+  - {fileID: 8946437709543804642, guid: a665f87dc47b6ff42bc49c92e14c4c24, type: 3}
 --- !u!4 &1974040683
 Transform:
   m_ObjectHideFlags: 0
@@ -7813,6 +7816,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1974040688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974040681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1759b4afe3746144f93714bdc4934ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infoContainer:
+  - {fileID: 11400000, guid: 12b8475b31d177e40ac39f24018bec5c, type: 2}
+  - {fileID: 11400000, guid: 6d4079f6b49a5f04ab3064e7af5d1cb1, type: 2}
+  - {fileID: 11400000, guid: 0ab2bf37730d8c44f820c7a106d668b7, type: 2}
+  - {fileID: 11400000, guid: 9ac3c1fa9c02a224ebc4956fbb8b39bd, type: 2}
+  - {fileID: 11400000, guid: 93cd70f3ad795b147867aca97ec83a9f, type: 2}
+  - {fileID: 11400000, guid: 6c315b17550635247af42eaeeba1f4b2, type: 2}
+  - {fileID: 11400000, guid: 77c7ca7e68733a84dace3919a45589b7, type: 2}
+  - {fileID: 11400000, guid: 97b0697af212ad7429fff6f8ca14ecb4, type: 2}
 --- !u!1 &2029396013
 GameObject:
   m_ObjectHideFlags: 0

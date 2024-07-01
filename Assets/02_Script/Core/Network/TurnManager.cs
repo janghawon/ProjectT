@@ -115,6 +115,10 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
             _isGoldTime.Value = true;
             _turnCount = 0;
             Debug.Log("골드 타임");
+
+            //임시
+            InGameUIContent content = UIManager.Instance.GetSceneUIContent<InGameUIContent>();
+            content.EnableContent(InGameType.destination);
             OnGoldTimeStart?.Invoke();
 
         }

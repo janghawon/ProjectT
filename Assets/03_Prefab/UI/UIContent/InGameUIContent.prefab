@@ -3690,7 +3690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1984300279101299604
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4928,7 +4928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8279509803243672978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5415,7 +5415,7 @@ MonoBehaviour:
   _connectTarotEffectionEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6389675413684893767}
+      - m_Target: {fileID: 630302126611565591}
         m_TargetAssemblyTypeName: ApplyTarotCardEffection, Assembly-CSharp
         m_MethodName: ApplyTarotEffection
         m_Mode: 0
@@ -8549,6 +8549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1094327247449467899}
   - component: {fileID: 6995810397505534371}
+  - component: {fileID: 630302126611565591}
   m_Layer: 5
   m_Name: InGameUIContent
   m_TagString: Untagged
@@ -8605,6 +8606,18 @@ MonoBehaviour:
   _pageClip: {fileID: 8300000, guid: 536a0ff6111bb234d948b863b9f9f21d, type: 3}
   _currentContent: {fileID: 5383450150586986429}
   _textSetter: {fileID: 7261518639616836501}
+--- !u!114 &630302126611565591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772599325246556244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26d441fb91b8204a9c4e3c8d5c87904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7889810427140274683
 GameObject:
   m_ObjectHideFlags: 0
@@ -8772,7 +8785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1632395051571122273
 RectTransform:
   m_ObjectHideFlags: 0

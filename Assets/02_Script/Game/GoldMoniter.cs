@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 
 public class GoldMoniter : MonoBehaviour
@@ -20,7 +21,13 @@ public class GoldMoniter : MonoBehaviour
     private void HandleDataChanged(PlayerData changeData)
     {
 
-        _text.text = $"Gold : {changeData.gold}";
+        if(changeData.clientId == NetworkManager.Singleton.LocalClientId)
+        {
+
+            _text.text = $"Gold : {changeData.gold}";
+
+        }
+
 
     }
 }
