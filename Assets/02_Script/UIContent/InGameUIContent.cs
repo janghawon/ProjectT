@@ -57,6 +57,8 @@ public class InGameUIContent : SceneUIContent
         _setUpEvent?.Invoke();
 
         TurnManager.Instance.OnTurnChanged += HandleTurnChanged;
+
+        UIManager.Instance.CanvasTrm.GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
     private void HandleTurnChanged(ulong oldId, ulong newId)
