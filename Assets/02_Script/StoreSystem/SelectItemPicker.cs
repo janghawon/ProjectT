@@ -27,7 +27,7 @@ public class SelectItemPicker : MonoBehaviour
 
         _currentItemElement = element;
 
-        //_itemProfile.sprite = info.visual;
+        _itemProfile.sprite = info.visual;
         _itemNameLabel.SetText($"<wiggle>{info.itemName}</>");
         _itemInfoLabel.SetText($"<wave>{info.info}</>");
         
