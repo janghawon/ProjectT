@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Future Frediction_Tarot Info
   m_EditorClassIdentifier: 
   id: 4
-  visual: {fileID: 0}
-  cardName: 
-  info: 
+  visual: {fileID: 21300000, guid: 470a66ad6972e9542a7a6889c873ae08, type: 3}
+  cardName: "\uBBF8\uB798 \uC608\uC9C0"
+  info: "\uC591 \uD50C\uB808\uC774\uC5B4\uC5D0\uAC8C \n\u2018\uC218\uC815\uAD6C\u2019\uC544\uC774\uD15C\uC744
+    \uD558\uB098\uC529 \uC9C0\uAE09\uD569\uB2C8\uB2E4."
   _toGetitem: {fileID: 11400000, guid: 0ab2bf37730d8c44f820c7a106d668b7, type: 2}

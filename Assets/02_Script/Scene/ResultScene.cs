@@ -4,7 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UIFunction;
 
-public class ResultScene : MonoBehaviour
+public class ResultScene : NetworkBehaviour
 {
 
     private IEnumerator Start()
@@ -17,9 +17,21 @@ public class ResultScene : MonoBehaviour
 
         yield return null;
 
+        if (IsServer)
+        {
+
+            SetUIClientRPC(PlayerPrefs.GetInt("DIE_PLAYER", -1));
+
+        }
+
+    }
+
+    [ClientRpc]
+    public void SetUIClientRPC(int id)
+    {
         GameResultUI ui = UIManager.Instance.GetSceneUIContent<GameResultUI>();
 
-        if (PlayerPrefs.GetInt("DIE_PLAYER", -1) == (int)NetworkManager.Singleton.LocalClientId)
+        if (id == (int)NetworkManager.Singleton.LocalClientId)
         {
             ui.SetResultBlock(ResultType.Defeat);
         }
@@ -27,6 +39,7 @@ public class ResultScene : MonoBehaviour
         {
             ui.SetResultBlock(ResultType.Win);
         }
+
     }
 
 }

@@ -109,19 +109,7 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
     private void ChangeTurn()
     {
 
-        if(_turnCount == 6 && !IsGoldTime)
-        {
 
-            _isGoldTime.Value = true;
-            _turnCount = 0;
-            Debug.Log("골드 타임");
-
-            //임시
-            InGameUIContent content = UIManager.Instance.GetSceneUIContent<InGameUIContent>();
-            content.EnableContent(InGameType.destination);
-            OnGoldTimeStart?.Invoke();
-
-        }
 
         _turnCount++;
         _turnPlayerId.Value = _connectClientIds.Find(x => x != _turnPlayerId.Value);
@@ -148,6 +136,13 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
 
     }
 
+    [ClientRpc]
+    private void GoldTimeClientRPC()
+    {
+
+        OnGoldTimeStart?.Invoke();
+
+    }
     private IEnumerator TurnPassCo()
     {
 
@@ -181,6 +176,22 @@ public sealed class TurnManager : NetworkMonoSingleton<TurnManager>, INetworkIni
                 var data = PlayerDataManager.Instance[_turnPlayerId.Value];
                 data.extraTurnTime = 0;
                 PlayerDataManager.Instance.SetData(data);
+
+            }
+
+            if (_turnCount == 6 && !IsGoldTime)
+            {
+
+                _isGoldTime.Value = true;
+                _turnCount = 0;
+
+                //임시
+                InGameUIContent content = UIManager.Instance.GetSceneUIContent<InGameUIContent>();
+                content.EnableContent(InGameType.destination);
+                //OnGoldTimeStart?.Invoke();
+                GoldTimeClientRPC();
+
+                yield return new WaitForSeconds(3f);
 
             }
 

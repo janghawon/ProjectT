@@ -61,6 +61,9 @@ public class InGameUIContent : SceneUIContent
 
     private void HandleTurnChanged(ulong oldId, ulong newId)
     {
+
+        //if (TurnManager.Instance.IsGoldTime) return;
+
         EnableContent(InGameType.mainText);
         
         if(TurnManager.Instance.MyTurn)

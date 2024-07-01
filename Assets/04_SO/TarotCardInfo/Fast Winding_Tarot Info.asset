@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fast Winding_Tarot Info
   m_EditorClassIdentifier: 
   id: 5
-  visual: {fileID: 0}
-  cardName: 
-  info: 
+  visual: {fileID: 21300000, guid: ac1e85ac78c7e054cb167da3c27f2f4a, type: 3}
+  cardName: "\uBE68\uB9AC \uAC10\uAE30"
+  info: "\uACE8\uB4E0 \uD0C0\uC784 \uC2DC\uAC04 \uC81C\uD55C\uC774 \n30\uCD08\uB85C
+    \uC2DC\uC791\uB429\uB2C8\uB2E4."
