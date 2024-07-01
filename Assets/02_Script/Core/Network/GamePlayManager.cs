@@ -205,6 +205,29 @@ public class GamePlayManager : NetworkMonoSingleton<GamePlayManager>
         GetRandomItemClientRpc();
     }
 
+    public void AddTarot(int id)
+    {
+
+        AddTarotServerRPC(id);
+
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void AddTarotServerRPC(int id)
+    {
+
+        AddTarotClientRPC(id);
+
+    }
+
+    [ClientRpc]
+    private void AddTarotClientRPC(int id)
+    {
+
+        FindObjectOfType<ApplyTarotCardEffection>().ApplyTarotEffectLink(id);
+
+    }
+
     [ClientRpc]
     private void GetRandomItemClientRpc()
     {

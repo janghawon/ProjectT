@@ -17,6 +17,8 @@ public class DestinationTarotSetter : MonoBehaviour
 
     public void SetTarotInfo(TarotCardInfo hostInfo, TarotCardInfo clientInfo)
     {
+        _hostTarotCard.SetInfo(hostInfo);
+        _clientTarotCard.SetInfo(clientInfo);
         _hostTarotCard.SetLabelText(hostInfo.cardName, hostInfo.info);
         _clientTarotCard.SetLabelText(clientInfo.cardName, clientInfo.info);
 
