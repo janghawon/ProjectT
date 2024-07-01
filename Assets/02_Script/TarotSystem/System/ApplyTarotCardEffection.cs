@@ -24,7 +24,7 @@ public class ApplyTarotCardEffection : MonoBehaviour
         InGameUIContent content = UIManager.Instance.GetSceneUIContent<InGameUIContent>();
 
         content.EnableContent(InGameType.destination);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         content.EnableContent(InGameType.none);
     }
 }
