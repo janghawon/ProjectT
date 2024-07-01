@@ -65,7 +65,7 @@ public class GameResultUI : SceneUIContent
 
         backLabel.OnClickEvent += (v) =>
         NetworkManager.Singleton.SceneManager.
-        LoadScene("LobbyScene", UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        LoadScene("Lobby", UnityEngine.SceneManagement.LoadSceneMode.Additive);
 
         backLabel.OnHoverEvent += HandleBackLabelHover;
         backLabel.OnDesecendEvent += HandleBackLabelDescend;
